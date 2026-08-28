@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>THOVE-NB Extension Store</title>
+  <!-- THẺ META QUAN TRỌNG ĐỂ TRÁNH LỖI 153 -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
   <style>
     /* BẢNG MÀU GIAO DIỆN DARK MODE CHUYÊN NGHIỆP */
     :root {
-      --bg-main: #0a1118;        
+      --bg-main: #0a1118;      
       --bg-panel: #131e2b;       
       --bg-card: #182737;        
       --border-color: #26384a;   
@@ -24,29 +27,29 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     
-    body { background-color: var(--bg-main); color: var(--text-main); height: 100vh; overflow: hidden; padding: 15px; }
+    body { background-color: var(--bg-main); color: var(--text-main); height: 100vh; overflow: hidden; padding: 12px; }
 
     /* LỚP PHỦ ĐĂNG NHẬP / ĐĂNG KÝ OTP */
     .login-wrapper { display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; position: fixed; top: 0; left: 0; z-index: 999; background: rgba(10, 17, 24, 0.95); backdrop-filter: blur(8px); }
-    .login-container { background: var(--bg-panel); border: 1px solid var(--border-color); padding: 40px; border-radius: 16px; width: 420px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
-    .login-container h2 { text-align: center; margin-bottom: 20px; color: var(--orange-main); font-size: 22px; }
-    .input-group { margin-bottom: 18px; }
-    .input-group label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
-    .input-group input { width: 100%; padding: 14px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-main); color: white; outline: none; font-size: 14px; }
+    .login-container { background: var(--bg-panel); border: 1px solid var(--border-color); padding: 32px; border-radius: 12px; width: 380px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+    .login-container h2 { text-align: center; margin-bottom: 16px; color: var(--orange-main); font-size: 20px; }
+    .input-group { margin-bottom: 14px; }
+    .input-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
+    .input-group input { width: 100%; padding: 11px; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-main); color: white; outline: none; font-size: 13px; }
     .input-group input:focus { border-color: var(--orange-main); }
-    .auth-btn { width: 100%; padding: 14px; background: linear-gradient(90deg, #ff7b00, var(--orange-main)); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 15px; margin-top: 10px; transition: 0.3s; }
-    .auth-btn:hover { background: var(--orange-hover); box-shadow: 0 0 15px rgba(255, 107, 0, 0.3); }
+    .auth-btn { width: 100%; padding: 11px; background: linear-gradient(90deg, #ff7b00, var(--orange-main)); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px; margin-top: 8px; transition: 0.3s; }
+    .auth-btn:hover { background: var(--orange-hover); box-shadow: 0 0 12px rgba(255, 107, 0, 0.3); }
     .auth-btn.secondary { background: transparent; border: 1px solid var(--orange-main); color: var(--orange-main); }
     .auth-btn.cancel { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); }
     .auth-btn:disabled { background: #555; border-color: #555; cursor: not-allowed; color: #aaa; box-shadow: none; }
-    .msg-error { color: #ff4d4d; font-size: 13px; margin-top: 15px; text-align: center; min-height: 18px; }
+    .msg-error { color: #ff4d4d; font-size: 12px; margin-top: 12px; text-align: center; min-height: 16px; }
     .hidden { display: none !important; }
 
-    /* GIAO DIỆN STORE CỐ ĐỊNH ĐẦU & ĐÁY */
+    /* GIAO DIỆN STORE CỐ ĐỊNH ĐẦU & ĐÁY (TỶ LỆ 0.8) */
     #store-ui { 
       max-width: 1350px; 
       margin: 0 auto; 
-      height: calc(100vh - 30px); 
+      height: calc(100vh - 24px); 
       display: flex;
       flex-direction: column;
     }
@@ -54,8 +57,8 @@
     .panel { 
       background: var(--bg-panel); 
       border: 1px solid var(--border-color); 
-      border-radius: 12px; 
-      padding: 15px 25px; 
+      border-radius: 10px; 
+      padding: 12px 20px; 
     }
 
     /* 1. TOOLBAR CỐ ĐỊNH Ở PHÍA TRÊN */
@@ -64,46 +67,67 @@
       justify-content: space-between; 
       align-items: center; 
       flex-shrink: 0; 
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-    .header-left { display: flex; align-items: center; gap: 15px; }
-    .header-left img { width: 50px; height: 50px; border-radius: 10px; border: 1px solid var(--border-color); object-fit: cover; }
-    .header-left h1 { font-size: 17px; color: white; margin-bottom: 3px; display: flex; align-items: center; gap: 8px; }
-    .header-left p { font-size: 11px; color: var(--text-muted); }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .header-left img { width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--border-color); object-fit: cover; }
+    .header-left h1 { font-size: 15px; color: white; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; }
+    .header-left p { font-size: 10px; color: var(--text-muted); }
 
-    .header-right { display: flex; align-items: center; gap: 12px; }
-    .search-box { background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 20px; padding: 7px 14px; display: flex; align-items: center; width: 230px; }
-    .search-box input { background: transparent; border: none; color: white; outline: none; width: 100%; font-size: 12px; padding-left: 6px; }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .search-box { background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 16px; padding: 5px 12px; display: flex; align-items: center; width: 200px; }
+    .search-box input { background: transparent; border: none; color: white; outline: none; width: 100%; font-size: 11px; padding-left: 5px; }
     
-    .lang-toggle { display: flex; background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; }
-    .lang-btn { padding: 7px 10px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 11px; font-weight: bold; }
+    .lang-toggle { display: flex; background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 6px; overflow: hidden; }
+    .lang-btn { padding: 5px 8px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 10px; font-weight: bold; }
     .lang-btn.active { background: var(--orange-main); color: white; }
-    .logout-btn { cursor: pointer; color: #ff4d4d; padding: 7px 12px; background: rgba(255, 77, 77, 0.1); border-radius: 8px; font-size: 11px; font-weight: bold; border: 1px solid rgba(255, 77, 77, 0.3); transition: 0.2s; }
+    .logout-btn { cursor: pointer; color: #ff4d4d; padding: 5px 10px; background: rgba(255, 77, 77, 0.1); border-radius: 6px; font-size: 10px; font-weight: bold; border: 1px solid rgba(255, 77, 77, 0.3); transition: 0.2s; }
     .logout-btn:hover { background: rgba(255, 77, 77, 0.2); }
 
-    /* 2. KHU VỰC NỘI DUNG Ở GIỮA (Có thanh cuộn riêng) */
+    /* 2. KHU VỰC NỘI DUNG Ở GIỮA */
     .main-scroll-area {
-      flex: 1;                    
-      overflow-y: auto;          
+      flex: 1;               
+      overflow-y: auto;      
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
       padding-right: 4px;        
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-    .main-scroll-area::-webkit-scrollbar { width: 6px; }
+    .main-scroll-area::-webkit-scrollbar { width: 5px; }
     .main-scroll-area::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
     .main-scroll-area::-webkit-scrollbar-thumb:hover { background: var(--orange-main); }
 
-    .categories-bar { display: flex; gap: 8px; flex-wrap: wrap; }
-    .cat-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 7px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 500; transition: 0.2s; }
+    /* THANH TAB 10 CHỨC NĂNG THU NHỎ (0.8) */
+    .categories-bar { 
+      display: flex; 
+      gap: 6px; 
+      flex-wrap: nowrap; 
+      overflow-x: auto; 
+      padding-bottom: 4px;
+    }
+    .categories-bar::-webkit-scrollbar { height: 3px; }
+    .categories-bar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+
+    .cat-btn { 
+      background: transparent; 
+      border: 1px solid var(--border-color); 
+      color: var(--text-muted); 
+      padding: 5px 12px; 
+      border-radius: 16px; 
+      cursor: pointer; 
+      font-size: 10.5px; 
+      font-weight: 500; 
+      white-space: nowrap;
+      transition: 0.2s; 
+    }
     .cat-btn.active, .cat-btn:hover { background: var(--orange-main); color: white; border-color: var(--orange-main); }
 
-    /* LƯỚI CARD PLUGIN - CHIA ĐÚNG 3 CỘT (3 HÀNG NGANG) */
+    /* LƯỚI CARD PLUGIN - CHIA ĐÚNG 3 CỘT */
     .store-grid { 
       display: grid; 
       grid-template-columns: repeat(3, 1fr); 
-      gap: 15px; 
+      gap: 12px; 
     }
     @media (max-width: 1100px) {
       .store-grid { grid-template-columns: repeat(2, 1fr); }
@@ -112,44 +136,43 @@
       .store-grid { grid-template-columns: 1fr; }
     }
 
-    .plugin-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.2s; }
+    .plugin-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.2s; }
     .plugin-card:hover { border-color: #3b5570; }
     
-    .plugin-header { display: flex; gap: 10px; margin-bottom: 8px; }
-    .plugin-icon { width: 40px; height: 40px; background: var(--bg-main); border-radius: 8px; display: flex; justify-content: center; align-items: center; font-size: 20px; border: 1px solid var(--border-color); flex-shrink: 0; overflow: hidden; }
+    .plugin-header { display: flex; gap: 8px; margin-bottom: 6px; }
+    .plugin-icon { width: 32px; height: 32px; background: var(--bg-main); border-radius: 6px; display: flex; justify-content: center; align-items: center; font-size: 16px; border: 1px solid var(--border-color); flex-shrink: 0; overflow: hidden; }
     .plugin-icon img { width: 100%; height: 100%; object-fit: cover; }
     
     .plugin-info { flex: 1; }
     .plugin-title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
-    .plugin-title-row h3 { font-size: 14px; color: white; font-weight: 600; }
-    .plugin-version { font-size: 10px; color: var(--orange-main); font-weight: bold; background: rgba(255, 107, 0, 0.1); padding: 2px 5px; border-radius: 4px; }
+    .plugin-title-row h3 { font-size: 12px; color: white; font-weight: 600; }
+    .plugin-version { font-size: 9px; color: var(--orange-main); font-weight: bold; background: rgba(255, 107, 0, 0.1); padding: 1px 4px; border-radius: 3px; }
     
-    /* THÔNG TIN SAO & ĐẾM LƯỢT TẢI */
-    .plugin-meta { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; display: flex; gap: 12px; align-items: center; }
-    .rating-stars { color: #facc15; font-size: 11px; display: inline-flex; gap: 1px; cursor: pointer; }
+    .plugin-meta { font-size: 10px; color: var(--text-muted); margin-bottom: 5px; display: flex; gap: 10px; align-items: center; }
+    .rating-stars { color: #facc15; font-size: 10px; display: inline-flex; gap: 1px; cursor: pointer; }
     .rating-stars span { transition: transform 0.1s; }
     .rating-stars span:hover { transform: scale(1.2); }
-    .download-count { color: var(--blue-text); display: flex; align-items: center; gap: 3px; font-weight: 500; }
+    .download-count { color: var(--blue-text); display: flex; align-items: center; gap: 2px; font-weight: 500; }
 
-    .plugin-desc { font-size: 11px; color: #a0b3c6; line-height: 1.4; margin-bottom: 8px; }
+    .plugin-desc { font-size: 10px; color: #a0b3c6; line-height: 1.35; margin-bottom: 6px; }
     
-    .features-list { background: rgba(10, 17, 24, 0.5); border-radius: 6px; padding: 5px 8px; margin-bottom: 8px; border: 1px dashed var(--border-color); }
-    .features-list li { font-size: 10px; color: var(--text-muted); list-style: none; padding: 1px 0; display: flex; align-items: center; gap: 5px; }
+    .features-list { background: rgba(10, 17, 24, 0.5); border-radius: 5px; padding: 4px 6px; margin-bottom: 6px; border: 1px dashed var(--border-color); }
+    .features-list li { font-size: 9px; color: var(--text-muted); list-style: none; padding: 1px 0; display: flex; align-items: center; gap: 4px; }
     .features-list li::before { content: "✓"; color: var(--green-text); font-weight: bold; }
 
-    .plugin-tags { display: flex; gap: 5px; margin-bottom: 10px; flex-wrap: wrap; }
-    .tag { font-size: 9px; padding: 2px 5px; border-radius: 4px; font-weight: bold; border: 1px solid var(--border-color); color: var(--text-muted); }
+    .plugin-tags { display: flex; gap: 4px; margin-bottom: 8px; flex-wrap: wrap; }
+    .tag { font-size: 8px; padding: 1px 4px; border-radius: 3px; font-weight: bold; border: 1px solid var(--border-color); color: var(--text-muted); }
     .tag.hot { border-color: var(--orange-main); color: var(--orange-main); background: rgba(255, 107, 0, 0.1); }
     .tag.free { background: var(--green-bg); border-color: var(--green-bg); color: var(--green-text); }
     .tag.new { background: var(--blue-bg); border-color: var(--blue-bg); color: var(--blue-text); }
     .tag.pro { background: var(--purple-bg); border-color: var(--purple-bg); color: var(--purple-text); }
 
-    .plugin-actions { display: flex; gap: 6px; }
-    .btn-download { flex: 2; background: linear-gradient(90deg, #ff7b00, var(--orange-main)); color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 11px; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 4px; }
+    .plugin-actions { display: flex; gap: 5px; }
+    .btn-download { flex: 2; background: linear-gradient(90deg, #ff7b00, var(--orange-main)); color: white; border: none; padding: 6px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 10px; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 3px; }
     .btn-download:hover { background: var(--orange-hover); }
-    .btn-action-sec { flex: 1; background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 8px; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 500; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 3px; text-decoration: none; }
+    .btn-action-sec { flex: 1; background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 6px; border-radius: 5px; cursor: pointer; font-size: 9.5px; font-weight: 500; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 2px; text-decoration: none; }
     .btn-action-sec:hover { border-color: var(--text-muted); color: white; background: rgba(255, 255, 255, 0.05); }
-    .btn-active { flex: 2; background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-text); border-radius: 6px; padding: 8px; font-weight: bold; font-size: 11px; cursor: default; text-align: center; }
+    .btn-active { flex: 2; background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-text); border-radius: 5px; padding: 6px; font-weight: bold; font-size: 10px; cursor: default; text-align: center; }
 
     /* 3. FOOTER CỐ ĐỊNH ĐÁY */
     .store-footer { 
@@ -157,21 +180,21 @@
       justify-content: space-between; 
       align-items: center; 
       flex-shrink: 0; 
-      padding: 10px 25px;
+      padding: 8px 20px;
     }
-    .footer-left { display: flex; align-items: center; gap: 12px; }
-    .qr-box { width: 80px; height: 80px; background: white; border-radius: 6px; padding: 3px; }
+    .footer-left { display: flex; align-items: center; gap: 10px; }
+    .qr-box { width: 65px; height: 65px; background: white; border-radius: 5px; padding: 2px; }
     .qr-box img { width: 100%; height: 100%; object-fit: contain; }
     
-    .author-info h4 { font-size: 12px; margin-bottom: 2px; color: white; }
-    .author-info p { font-size: 10px; color: var(--text-muted); margin-bottom: 4px; }
-    .social-links { display: flex; gap: 6px; }
-    .social-links a { text-decoration: none; font-size: 9px; color: var(--text-muted); border: 1px solid var(--border-color); padding: 2px 6px; border-radius: 10px; background: var(--bg-main); transition: 0.2s; }
+    .author-info h4 { font-size: 11px; margin-bottom: 1px; color: white; }
+    .author-info p { font-size: 9.5px; color: var(--text-muted); margin-bottom: 3px; }
+    .social-links { display: flex; gap: 5px; }
+    .social-links a { text-decoration: none; font-size: 8.5px; color: var(--text-muted); border: 1px solid var(--border-color); padding: 2px 5px; border-radius: 8px; background: var(--bg-main); transition: 0.2s; }
     .social-links a:hover { color: white; border-color: var(--text-muted); }
     
-    .footer-right img { height: 95px; opacity: 1; }
+    .footer-right img { height: 75px; opacity: 1; }
 
-    /* --- CSS CHO MODAL XEM YOUTUBE TRỰC TIẾP --- */
+    /* MODAL XEM YOUTUBE TRỰC TIẾP */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -183,7 +206,7 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(4px);
     }
     .modal-overlay.hidden {
       display: none !important;
@@ -191,32 +214,31 @@
     .modal-content {
       background: var(--bg-panel);
       border: 1px solid var(--border-color);
-      width: 90%;
-      max-width: 800px;
-      border-radius: 12px;
-      padding: 15px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+      width: 85%;
+      max-width: 720px;
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.8);
       position: relative;
     }
     .modal-close-btn {
       background: #ff4d4d;
       color: #fff;
       border: none;
-      padding: 6px 14px;
-      border-radius: 6px;
+      padding: 5px 12px;
+      border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
+      font-size: 11px;
       float: right;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       transition: background 0.2s;
     }
-    .modal-close-btn:hover {
-      background: #ff1a1a;
-    }
+    .modal-close-btn:hover { background: #ff1a1a; }
     .video-container {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* Tỷ lệ 16:9 chuẩn YouTube */
+      padding-bottom: 56.25%;
       height: 0;
       clear: both;
     }
@@ -226,7 +248,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      border-radius: 8px;
+      border-radius: 6px;
+      border: none;
     }
   </style>
 </head>
@@ -236,7 +259,7 @@
   <div id="step1" class="login-wrapper">
     <div class="login-container">
       <h2>Đăng Nhập Store</h2>
-      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 20px; text-align: center;">
+      <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px; text-align: center;">
         Nhập Email & Mật khẩu để đăng nhập hoặc Đăng ký nhận mã OTP.
       </p>
       <div class="input-group">
@@ -257,7 +280,7 @@
   <div id="step2" class="login-wrapper hidden">
     <div class="login-container">
       <h2>Xác Nhận Đăng Ký</h2>
-      <p style="text-align: center; font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+      <p style="text-align: center; font-size: 11px; color: var(--text-muted); margin-bottom: 16px;">
         Mã OTP 6 số đã được gửi tới Email của bạn. (Hết hạn sau 5 phút)
       </p>
       <div class="input-group">
@@ -284,7 +307,7 @@
       </div>
       <div class="header-right">
         <div class="search-box">
-          <span style="color: var(--text-muted); font-size: 13px;">🔍</span>
+          <span style="color: var(--text-muted); font-size: 11px;">🔍</span>
           <input type="text" id="searchInput" oninput="onSearchInput()" placeholder="Tìm kiếm plugin...">
         </div>
         <div class="lang-toggle">
@@ -295,9 +318,10 @@
       </div>
     </div>
 
-    <!-- VÙNG NỘI DUNG GIỮA (CUỘN ĐỘC LẬP) -->
+    <!-- VÙNG NỘI DUNG GIỮA -->
     <div class="main-scroll-area">
-      <div class="panel" style="margin-bottom: 0; padding: 10px 20px;">
+      <div class="panel" style="margin-bottom: 0; padding: 8px 16px;">
+        <!-- ĐÃ ĐƯỢC THIẾT KẾ ĐỦ 10 TAB CHỨC NĂNG -->
         <div class="categories-bar" id="categoriesBar"></div>
       </div>
       <div class="store-grid" id="pluginsGrid"></div>
@@ -331,16 +355,99 @@
     <div class="modal-content">
       <button class="modal-close-btn" onclick="closeVideoModal()">✕ Đóng</button>
       <div class="video-container">
-        <iframe id="youtubeIframe" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- ĐÃ THÊM referrerpolicy="strict-origin-when-cross-origin" ĐỂ CHỐNG LỖI 153 -->
+        <iframe id="youtubeIframe" 
+                src="" 
+                title="YouTube video player" 
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
       </div>
     </div>
   </div>
 
   <script>
     const GAS_URL = "https://script.google.com/macros/s/AKfycbykbmPWwPKLy2HGOiN3sOJwSBzPBvTOEPppL7uqY4pUKGJSVIYDqQQvTSpS3p6SlH1B/exec";
-    const GITHUB_JSON_URL = "https://gist.githubusercontent.com/Nguyenban92/a59761b7e6921be7c6fa0e96ef3292a8/raw/cce454f25b396b936e775b730ff7eb2a5cc440cd/1.json";
+    
+    let storeData = {
+      categories: [
+        { id: "tab_01", label: "🔥 Tất Cả" },
+        { id: "tab_02", label: "🪑 Nội Thất" },
+        { id: "tab_03", label: "🏗️ Kết Cấu" },
+        { id: "tab_04", label: "📐 Bóc Tách" },
+        { id: "tab_05", label: "🗂️ Thư Viện" },
+        { id: "tab_06", label: "⚡ Tự Động Hóa" },
+        { id: "tab_07", label: "🎨 Vật Liệu" },
+        { id: "tab_08", label: "📊 Xuất Báo Cáo" },
+        { id: "tab_09", label: "🛠️ Tiện Ích Khác" },
+        { id: "tab_10", label: "⭐ Premium Pro" }
+      ],
+      plugins: [
+        {
+          id: "nb_cabinet",
+          name: "NB Cabinet Pro",
+          version: "v2.5",
+          category: "tab_02",
+          icon: "🗄️",
+          icon_type: "text",
+          rating: 5,
+          downloads_count: 1280,
+          short_desc: "Tạo tủ quần áo, tủ bếp tự động thông minh theo kích thước tùy biến.",
+          features: ["Tự động khoan cam chốt", "Xuất mã ván CNC chuẩn", "Tùy biến vật liệu linh hoạt"],
+          tags: [
+            { text: "HOT", class: "hot" },
+            { text: "PRO", class: "pro" }
+          ],
+          download_url: "#",
+          guide_url: "https://thovenb.com",
+          video_url: "https://www.youtube-nocookie.com/embed/NUgPrYwUblc",
+          activated: false
+        },
+        {
+          id: "nb_cutlist",
+          name: "NB CutList Optimizer",
+          version: "v1.8",
+          category: "tab_04",
+          icon: "✂️",
+          icon_type: "text",
+          rating: 5,
+          downloads_count: 950,
+          short_desc: "Thuật toán tối ưu hóa cắt ván gỗ công nghiệp, giảm thiểu tối đa phế liệu.",
+          features: ["Tính toán khổ ván thông minh", "Xuất file báo cáo chi tiết", "Hỗ trợ dán cạnh tự động"],
+          tags: [
+            { text: "FREE", class: "free" },
+            { text: "NEW", class: "new" }
+          ],
+          download_url: "#",
+          guide_url: "https://thovenb.com",
+          video_url: "https://www.youtube-nocookie.com/embed/NUgPrYwUblc",
+          activated: true
+        },
+        {
+          id: "nb_autodimension",
+          name: "NB Auto Dimension",
+          version: "v3.1",
+          category: "tab_06",
+          icon: "📏",
+          icon_type: "text",
+          rating: 4,
+          downloads_count: 620,
+          short_desc: "Ghi kích thước tự động cho bản vẽ sản xuất chỉ với 1 cú click.",
+          features: ["Tự động bắt điểm linh hoạt", "Tùy chỉnh font chữ & màu sắc", "Tiết kiệm 80% thời gian"],
+          tags: [
+            { text: "HOT", class: "hot" }
+          ],
+          download_url: "#",
+          guide_url: "https://thovenb.com",
+          video_url: "https://www.youtube-nocookie.com/embed/NUgPrYwUblc",
+          activated: false
+        }
+      ]
+    };
 
-    let storeData = { categories: [], plugins: [] };
+    const GITHUB_JSON_URL = "https://gist.githubusercontent.com/Nguyenban92/8c01686e2af50a5793b25229a1b894c1/raw/e65f121a2b9dccb08cb750773a6e80866ad0a2fd/Plugin.json";
+
     let currentCategory = "tab_01";
     let searchQuery = "";
     let currentLang = "VI";
@@ -352,12 +459,16 @@
           headers: { 'Cache-Control': 'no-cache' }
         });
         if (response.ok) {
-          storeData = await response.json();
-        } else {
-          console.error("Không thể tải dữ liệu JSON từ GitHub!");
+          const remoteData = await response.json();
+          if (remoteData && remoteData.plugins) {
+            storeData.plugins = remoteData.plugins;
+          }
+          if (remoteData && remoteData.categories && remoteData.categories.length >= 10) {
+            storeData.categories = remoteData.categories;
+          }
         }
       } catch (e) {
-        console.error("Lỗi kết nối GitHub JSON:", e);
+        console.log("Sử dụng dữ liệu cấu hình 10 tab mặc định cục bộ.");
       }
       initStoreUI();
     }
@@ -388,7 +499,7 @@
       });
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px;">Không tìm thấy plugin phù hợp.</div>`;
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 30px; font-size: 11px;">Không tìm thấy plugin phù hợp trong danh mục này.</div>`;
         return;
       }
 
@@ -397,7 +508,6 @@
           ? `<img src="${p.icon}" alt="${p.name}">` 
           : `${p.icon || '🧩'}`;
 
-        // Hàm render sao đánh giá (từ 1 đến 5 sao)
         const ratingVal = p.rating || 5;
         let starsHtml = '';
         for (let i = 1; i <= 5; i++) {
@@ -443,7 +553,7 @@
             }
             
             ${p.guide_url ? `
-              <button class="btn-action-sec" onclick="openExternalUrl('${p.guide_url}')" title="Xem hướng dẫn chi tiết">
+              <button class="btn-action-sec" onclick="openExternalUrl('${p.guide_url}')" title="Xem hướng dẫn">
                 📖 Web
               </button>
             ` : ''}
@@ -459,7 +569,6 @@
       }).join('');
     }
 
-    // Hàm xử lý khi người dùng bấm chọn số sao đánh giá
     function ratePlugin(pluginId, starCount) {
       const target = storeData.plugins.find(p => p.id === pluginId);
       if (target) {
@@ -519,20 +628,24 @@
       }
     }
 
-    // Các hàm mở/đóng Modal Video YouTube trực tiếp
     function openVideoModal(url) {
       if (!url) return;
       let embedUrl = url;
       if (url.includes("watch?v=")) {
         embedUrl = url.replace("watch?v=", "embed/");
       } else if (url.includes("youtu.be/")) {
-        embedUrl = url.replace("youtu.be/", "www.youtube.com/embed/");
+        embedUrl = url.replace("youtu.be/", "www.youtube-nocookie.com/embed/");
+      }
+
+      // Đảm bảo dùng nocookie để chạy mượt mà và chống lỗi bảo mật iframe
+      if (embedUrl.includes("youtube.com")) {
+        embedUrl = embedUrl.replace("youtube.com", "youtube-nocookie.com");
       }
 
       const modal = document.getElementById('videoModal');
       const iframe = document.getElementById('youtubeIframe');
       
-      iframe.src = embedUrl;
+      iframe.src = embedUrl + "?autoplay=1";
       modal.classList.remove('hidden');
     }
 
@@ -540,7 +653,7 @@
       const modal = document.getElementById('videoModal');
       const iframe = document.getElementById('youtubeIframe');
       
-      iframe.src = ""; // Dừng phát video ngầm khi đóng
+      iframe.src = "";
       modal.classList.add('hidden');
     }
 
