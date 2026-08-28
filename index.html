@@ -29,17 +29,18 @@
 
     .login-wrapper { display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; position: fixed; top: 0; left: 0; z-index: 999; background: rgba(4, 28, 34, 0.95); backdrop-filter: blur(8px); }
     .login-container { background: var(--bg-panel); border: 1px solid var(--border-color); padding: 32px; border-radius: 12px; width: 380px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-    .login-container h2 { text-align: center; margin-bottom: 16px; color: var(--orange-main); font-size: 20px; }
+    .login-container h2 { text-align: center; margin-bottom: 16px; color: var(--orange-main); font-size: 20px; font-weight: bold; }
     .input-group { margin-bottom: 14px; }
-    .input-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
+    .input-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; font-weight: bold; }
     .input-group input { width: 100%; padding: 11px; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-main); color: white; outline: none; font-size: 13px; }
     .input-group input:focus { border-color: var(--orange-main); }
     .auth-btn { width: 100%; padding: 11px; background: linear-gradient(90deg, #ff7b00, var(--orange-main)); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px; margin-top: 8px; transition: 0.3s; }
     .auth-btn:hover { background: var(--orange-hover); box-shadow: 0 0 12px rgba(255, 107, 0, 0.3); }
-    .auth-btn.secondary { background: transparent; border: 1px solid var(--orange-main); color: var(--orange-main); }
-    .auth-btn.cancel { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); }
+    .auth-btn.secondary { background: var(--orange-main); border: 1px solid var(--orange-main); color: white; font-weight: bold; }
+    .auth-btn.secondary:hover { background: var(--orange-hover); }
+    .auth-btn.cancel { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); font-weight: bold; }
     .auth-btn:disabled { background: #555; border-color: #555; cursor: not-allowed; color: #aaa; box-shadow: none; }
-    .msg-error { color: #ff4d4d; font-size: 12px; margin-top: 12px; text-align: center; min-height: 16px; }
+    .msg-error { color: #ff4d4d; font-size: 12px; margin-top: 12px; text-align: center; min-height: 16px; font-weight: bold; }
     .hidden { display: none !important; }
 
     #store-ui { 
@@ -66,16 +67,20 @@
     }
     .header-left { display: flex; align-items: center; gap: 12px; }
     .header-left img { width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--border-color); object-fit: cover; }
-    .header-left h1 { font-size: 15px; color: white; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; }
-    .header-left p { font-size: 10px; color: var(--text-muted); }
+    .header-left h1 { font-size: 15px; color: white; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; font-weight: bold; }
+    .header-left p { font-size: 10px; color: var(--text-muted); font-weight: bold; }
 
     .header-right { display: flex; align-items: center; gap: 10px; }
     .search-box { background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 16px; padding: 5px 12px; display: flex; align-items: center; width: 200px; }
-    .search-box input { background: transparent; border: none; color: white; outline: none; width: 100%; font-size: 11px; padding-left: 5px; }
+    .search-box input { background: transparent; border: none; color: white; outline: none; width: 100%; font-size: 11px; padding-left: 5px; font-weight: bold; }
     
     .lang-toggle { display: flex; background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 6px; overflow: hidden; }
     .lang-btn { padding: 5px 8px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 10px; font-weight: bold; }
     .lang-btn.active { background: var(--orange-main); color: white; }
+    
+    .youtube-btn { text-decoration: none; cursor: pointer; color: #ffffff; background: var(--orange-main); padding: 5px 10px; border-radius: 6px; font-size: 10px; font-weight: bold; border: 1px solid var(--orange-main); transition: 0.2s; display: flex; align-items: center; gap: 3px; }
+    .youtube-btn:hover { background: var(--orange-hover); }
+
     .logout-btn { cursor: pointer; color: #ff4d4d; padding: 5px 10px; background: rgba(255, 77, 77, 0.1); border-radius: 6px; font-size: 10px; font-weight: bold; border: 1px solid rgba(255, 77, 77, 0.3); transition: 0.2s; }
     .logout-btn:hover { background: rgba(255, 77, 77, 0.2); }
 
@@ -110,7 +115,7 @@
       border-radius: 16px; 
       cursor: pointer; 
       font-size: 10.5px; 
-      font-weight: 500; 
+      font-weight: bold; 
       white-space: nowrap;
       transition: 0.2s; 
     }
@@ -140,19 +145,19 @@
     
     .plugin-info { flex: 1; }
     .plugin-title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
-    .plugin-title-row h3 { font-size: 11.5px; color: white; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px; }
+    .plugin-title-row h3 { font-size: 11.5px; color: white; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px; }
     .plugin-version { font-size: 8.5px; color: var(--orange-main); font-weight: bold; background: rgba(255, 107, 0, 0.1); padding: 1px 3px; border-radius: 3px; }
     
-    .plugin-meta { font-size: 9.5px; color: var(--text-muted); margin-bottom: 5px; display: flex; gap: 6px; align-items: center; }
+    .plugin-meta { font-size: 9.5px; color: var(--text-muted); margin-bottom: 5px; display: flex; gap: 6px; align-items: center; font-weight: bold; }
     .rating-stars { color: #facc15; font-size: 9.5px; display: inline-flex; gap: 1px; cursor: pointer; }
     .rating-stars span { transition: transform 0.1s; }
     .rating-stars span:hover { transform: scale(1.2); }
-    .download-count { color: var(--blue-text); display: flex; align-items: center; gap: 2px; font-weight: 500; }
+    .download-count { color: var(--blue-text); display: flex; align-items: center; gap: 2px; font-weight: bold; }
 
-    .plugin-desc { font-size: 9.5px; color: #a0b3c6; line-height: 1.35; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .plugin-desc { font-size: 9.5px; color: #a0b3c6; line-height: 1.35; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-weight: bold; }
     
     .features-list { background: rgba(4, 28, 34, 0.5); border-radius: 5px; padding: 4px 6px; margin-bottom: 6px; border: 1px dashed var(--border-color); }
-    .features-list li { font-size: 8.5px; color: var(--text-muted); list-style: none; padding: 1px 0; display: flex; align-items: center; gap: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .features-list li { font-size: 8.5px; color: var(--text-muted); list-style: none; padding: 1px 0; display: flex; align-items: center; gap: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold; }
     .features-list li::before { content: "✓"; color: var(--green-text); font-weight: bold; }
 
     .plugin-tags { display: flex; gap: 3px; margin-bottom: 8px; flex-wrap: wrap; }
@@ -165,28 +170,29 @@
     .plugin-actions { display: flex; gap: 4px; }
     .btn-download { flex: 2; background: linear-gradient(90deg, #ff7b00, var(--orange-main)); color: white; border: none; padding: 5px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 9.5px; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 2px; }
     .btn-download:hover { background: var(--orange-hover); }
-    .btn-action-sec { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 5px 6px; border-radius: 5px; cursor: pointer; font-size: 9px; font-weight: 500; transition: 0.2s; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+    .btn-action-sec { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 5px 6px; border-radius: 5px; cursor: pointer; font-size: 9px; font-weight: bold; transition: 0.2s; display: flex; align-items: center; justify-content: center; text-decoration: none; }
     .btn-action-sec:hover { border-color: var(--text-muted); color: white; background: rgba(255, 255, 255, 0.05); }
     .btn-active { flex: 2; background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-text); border-radius: 5px; padding: 5px; font-weight: bold; font-size: 9.5px; cursor: default; text-align: center; }
 
+    /* Đã tinh chỉnh store-footer gọn lại */
     .store-footer { 
       display: flex; 
       justify-content: space-between; 
       align-items: center; 
       flex-shrink: 0; 
-      padding: 8px 20px;
+      padding: 6px 16px;
     }
     .footer-left { display: flex; align-items: center; gap: 10px; }
-    .qr-box { width: 65px; height: 65px; background: white; border-radius: 5px; padding: 2px; }
+    .qr-box { width: 82px; height: 82px; background: white; border-radius: 5px; padding: 2px; flex-shrink: 0; }
     .qr-box img { width: 100%; height: 100%; object-fit: contain; }
     
-    .author-info h4 { font-size: 11px; margin-bottom: 1px; color: white; }
-    .author-info p { font-size: 9.5px; color: var(--text-muted); margin-bottom: 3px; }
+    .author-info h4 { font-size: 11px; margin-bottom: 1px; color: white; font-weight: bold; }
+    .author-info p { font-size: 9px; color: var(--text-muted); margin-bottom: 3px; font-weight: bold; }
     .social-links { display: flex; gap: 5px; }
-    .social-links a { text-decoration: none; font-size: 8.5px; color: var(--text-muted); border: 1px solid var(--border-color); padding: 2px 5px; border-radius: 8px; background: var(--bg-main); transition: 0.2s; }
+    .social-links a { text-decoration: none; font-size: 8px; color: var(--text-muted); border: 1px solid var(--border-color); padding: 1px 5px; border-radius: 6px; background: var(--bg-main); transition: 0.2s; font-weight: bold; }
     .social-links a:hover { color: white; border-color: var(--text-muted); }
     
-    .footer-right img { height: 85px; opacity: 1; }
+    .footer-right img { height: 85px; opacity: 1; object-fit: contain; }
 
     .modal-overlay {
       position: fixed;
@@ -251,16 +257,16 @@
   <!-- BƯỚC 1: ĐĂNG NHẬP -->
   <div id="step1" class="login-wrapper">
     <div class="login-container">
-      <h2>Đăng Nhập Store</h2>
-      <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px; text-align: center;">
+      <h2 id="txt-login-title">Đăng Nhập Store</h2>
+      <p id="txt-login-desc" style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px; text-align: center; font-weight: bold;">
         Nhập Email & Mật khẩu để đăng nhập hoặc Đăng ký nhận mã OTP.
       </p>
       <div class="input-group">
-        <label>Địa chỉ Email</label>
+        <label id="txt-email-label">Địa chỉ Email</label>
         <input type="email" id="email" placeholder="Ví dụ: name@gmail.com" required>
       </div>
       <div class="input-group">
-        <label>Mật khẩu</label>
+        <label id="txt-pass-label">Mật khẩu</label>
         <input type="password" id="password" placeholder="Nhập mật khẩu" required>
       </div>
       <button class="auth-btn" onclick="loginUser()" id="btnLogin">Đăng Nhập</button>
@@ -272,16 +278,16 @@
   <!-- BƯỚC 2: NHẬP OTP -->
   <div id="step2" class="login-wrapper hidden">
     <div class="login-container">
-      <h2>Xác Nhận Đăng Ký</h2>
-      <p style="text-align: center; font-size: 11px; color: var(--text-muted); margin-bottom: 16px;">
+      <h2 id="txt-otp-title">Xác Nhận Đăng Ký</h2>
+      <p id="txt-otp-desc" style="text-align: center; font-size: 11px; color: var(--text-muted); margin-bottom: 16px; font-weight: bold;">
         Mã OTP 6 số đã được gửi tới Email của bạn. (Hết hạn sau 5 phút)
       </p>
       <div class="input-group">
-        <label>Mã OTP (6 số)</label>
+        <label id="txt-otp-label">Mã OTP (6 số)</label>
         <input type="number" id="otp" placeholder="Nhập mã OTP" required>
       </div>
       <button class="auth-btn" onclick="verifyOTP()" id="btnVerify">Xác Nhận Đăng Ký</button>
-      <button class="auth-btn cancel" onclick="cancelOTP()">Quay Lại</button>
+      <button class="auth-btn cancel" onclick="cancelOTP()" id="txt-back-btn">Quay Lại</button>
       <div id="msg2" class="msg-error"></div>
     </div>
   </div>
@@ -293,7 +299,7 @@
       <div class="header-left">
         <img id="header-logo" src="https://i.ibb.co/wZ6J60gC/icon.png" alt="Avatar">
         <div>
-          <h1>THOVE-NB STORE</h1>
+          <h1 id="txt-store-name">THOVE-NB STORE</h1>
           <p id="sub-title-text">Kho tiện ích SketchUp chọn lọc & Tự động hóa</p>
         </div>
       </div>
@@ -306,7 +312,8 @@
           <button class="lang-btn active" id="btnLangVI" onclick="switchLanguage('VI')">VI</button>
           <button class="lang-btn" id="btnLangEN" onclick="switchLanguage('EN')">EN</button>
         </div>
-        <button class="logout-btn" onclick="logout()" title="Đăng Xuất">Đăng xuất</button>
+        <a class="youtube-btn" href="https://www.youtube.com/@TienSinh.ThaoMai?sub_confirmation=1" target="_blank" title="Đăng ký kênh YouTube" id="txt-yt-btn">▶ Đăng Ký YT</a>
+        <button class="logout-btn" onclick="logout()" title="Đăng Xuất" id="txt-logout-btn">Đăng xuất</button>
       </div>
     </div>
 
@@ -317,18 +324,19 @@
       <div class="store-grid" id="pluginsGrid"></div>
     </div>
 
+    <!-- KHUNG DƯỚI ĐÃ ĐƯỢC TINH CHỈNH GỌN LẠI SÁT VÀO NHAU -->
     <div class="panel store-footer">
       <div class="footer-left">
         <div class="qr-box">
           <img src="https://i.ibb.co/1JJ3LMYF/Screenshot-2026-08-25-035615.png" alt="QR">
         </div>
         <div class="author-info">
-          <h4>Tác giả: Nguyễn Bân (THOVE-NB)</h4>
-          <p>Chuyên lập trình Plugin SketchUp theo yêu cầu & Tự động hóa sản xuất nội thất.</p>
+          <h4 id="txt-author">Tác giả: Nguyễn Bân (THOVE-NB)</h4>
+          <p id="txt-author-desc">Chuyên lập trình Plugin SketchUp theo yêu cầu & Tự động hóa sản xuất nội thất.</p>
           <div class="social-links">
-            <a href="https://zalo.me" target="_blank">Zalo Tư Vấn</a>
-            <a href="https://facebook.com" target="_blank">Facebook Cá Nhân</a>
-            <a href="https://thovenb.com" target="_blank">Website Cá Nhân</a>
+            <a href="https://zalo.me" target="_blank" id="txt-zalo">Zalo Tư Vấn</a>
+            <a href="https://facebook.com" target="_blank" id="txt-fb">Facebook Cá Nhân</a>
+            <a href="https://thovenb.com" target="_blank" id="txt-web">Website Cá Nhân</a>
           </div>
         </div>
       </div>
@@ -341,7 +349,7 @@
 
   <div id="videoModal" class="modal-overlay hidden">
     <div class="modal-content">
-      <button class="modal-close-btn" onclick="closeVideoModal()">✕ Đóng</button>
+      <button class="modal-close-btn" onclick="closeVideoModal()" id="txt-close-modal">✕ Đóng</button>
       <div class="video-container">
         <iframe id="youtubeIframe" 
                 src="" 
@@ -359,16 +367,16 @@
     
     let storeData = {
       "categories": [
-        { "id": "tab_01", "label": "Tất Cả Plugin" },
-        { "id": "tab_02", "label": "Plugin Cơ Bản" },
-        { "id": "tab_03", "label": "Plugin Nâng Cao" },
-        { "id": "tab_04", "label": "Nội Thất & Tủ Bếp" },
-        { "id": "tab_05", "label": "Thư Viện Nội Thất" },
-        { "id": "tab_06", "label": "Thư Viện Ngoại Thất" },
-        { "id": "tab_07", "label": "MAP & Vật Liệu" },
-        { "id": "tab_08", "label": "Render Ai Free" },
-        { "id": "tab_09", "label": "Tiện Ích Khác" },
-        { "id": "tab_10", "label": "Linh Tinh" }
+        { "id": "tab_01", "label": "Tất Cả Plugin", "label_en": "All Plugins" },
+        { "id": "tab_02", "label": "Plugin Cơ Bản", "label_en": "Basic Plugins" },
+        { "id": "tab_03", "label": "Plugin Nâng Cao", "label_en": "Advanced Plugins" },
+        { "id": "tab_04", "label": "Nội Thất & Tủ Bếp", "label_en": "Interior & Kitchen" },
+        { "id": "tab_05", "label": "Thư Viện Nội Thất", "label_en": "Interior Library" },
+        { "id": "tab_06", "label": "Thư Viện Ngoại Thất", "label_en": "Exterior Library" },
+        { "id": "tab_07", "label": "MAP & Vật Liệu", "label_en": "MAP & Materials" },
+        { "id": "tab_08", "label": "Render Ai Free", "label_en": "Free AI Render" },
+        { "id": "tab_09", "label": "Tiện Ích Khác", "label_en": "Other Utilities" },
+        { "id": "tab_10", "label": "Linh Tinh", "label_en": "Miscellaneous" }
       ],
       "plugins": [
         {
@@ -379,7 +387,9 @@
           "icon_type": "emoji",
           "icon": "🗄️",
           "short_desc": "Tự động thiết kế và bóc tách khối lượng tủ bếp thông minh.",
+          "short_desc_en": "Automatically design and estimate smart kitchen cabinets.",
           "features": ["Sinh linh kiện tự động", "Xuất danh sách vật liệu CNC"],
+          "features_en": ["Auto-generate components", "Export CNC material list"],
           "tags": [{ "class": "hot", "text": "HOT" }, { "class": "pro", "text": "PRO" }],
           "rating": 5,
           "downloads_count": 0,
@@ -396,7 +406,9 @@
           "icon_type": "emoji",
           "icon": "📏",
           "short_desc": "Công cụ đo kích thước nhanh cho người mới bắt đầu.",
+          "short_desc_en": "Quick dimensioning tool for beginners.",
           "features": ["Đo dimension cơ bản", "Tự động bắt điểm"],
+          "features_en": ["Basic dimensioning", "Auto snapping"],
           "tags": [{ "class": "free", "text": "FREE" }],
           "rating": 5,
           "downloads_count": 0,
@@ -413,7 +425,9 @@
           "icon_type": "emoji",
           "icon": "⚙️",
           "short_desc": "Công cụ tính toán hình học phức tạp và mảng đối tượng lớn.",
+          "short_desc_en": "Complex geometric calculation tool and large object arrays.",
           "features": ["Nhân bản ma trận 3D", "Tối ưu hóa hình khối nặng"],
+          "features_en": ["3D matrix duplication", "Heavy geometry optimization"],
           "tags": [{ "class": "pro", "text": "PRO" }],
           "rating": 5,
           "downloads_count": 0,
@@ -430,8 +444,10 @@
           "icon_type": "emoji",
           "icon": "🛋️",
           "short_desc": "Thư viện mẫu sofa, giường ngủ hiện đại dựng sẵn chất lượng cao.",
+          "short_desc_en": "High-quality pre-built modern sofa and bed sample library.",
           "features": ["Đa dạng phong cách", "Poly tối ưu nhẹ file"],
-          "tags": [{ "class": "new", "text": "MỚI" }],
+          "features_en": ["Various styles", "Lightweight optimized poly"],
+          "tags": [{ "class": "new", "text": "MỚI", "text_en": "NEW" }],
           "rating": 5,
           "downloads_count": 0,
           "download_url": "DIEN_LINK_TAI_RBZ_04",
@@ -447,7 +463,9 @@
           "icon_type": "emoji",
           "icon": "🌳",
           "short_desc": "Bộ sưu tập cây xanh, thảm cỏ, ngoại cảnh cho biệt thự và quy hoạch.",
+          "short_desc_en": "Collection of trees, grass, and exteriors for villas and planning.",
           "features": ["Cây 2D/3D linh hoạt", "Màu sắc chân thực"],
+          "features_en": ["Flexible 2D/3D trees", "Realistic colors"],
           "tags": [{ "class": "hot", "text": "HOT" }],
           "rating": 5,
           "downloads_count": 0,
@@ -464,7 +482,9 @@
           "icon_type": "emoji",
           "icon": "🎨",
           "short_desc": "Gán vật liệu vân gỗ, sơn tường hàng loạt theo tên component.",
+          "short_desc_en": "Batch assign wood grain and wall paint by component name.",
           "features": ["Quản lý thư viện map", "Áp vật liệu tức thì"],
+          "features_en": ["Map library management", "Instant material application"],
           "tags": [{ "class": "free", "text": "FREE" }],
           "rating": 5,
           "downloads_count": 0,
@@ -481,8 +501,10 @@
           "icon_type": "emoji",
           "icon": "✨",
           "short_desc": "Tích hợp công cụ Render AI tạo phối cảnh nhanh trực tiếp.",
+          "short_desc_en": "Integrated AI Render tool for fast direct perspective creation.",
           "features": ["Biến model thô thành ảnh đẹp", "Thao tác trực quan"],
-          "tags": [{ "class": "new", "text": "MỚI" }, { "class": "free", "text": "FREE" }],
+          "features_en": ["Turn raw models into great images", "Intuitive workflow"],
+          "tags": [{ "class": "new", "text": "MỚI", "text_en": "NEW" }, { "class": "free", "text": "FREE" }],
           "rating": 5,
           "downloads_count": 0,
           "download_url": "DIEN_LINK_TAI_RBZ_07",
@@ -498,7 +520,9 @@
           "icon_type": "emoji",
           "icon": "🧹",
           "short_desc": "Dọn dẹp file SketchUp nặng, xóa rác và vật liệu thừa hiệu quả.",
+          "short_desc_en": "Clean up heavy SketchUp files, remove waste and excess materials.",
           "features": ["Giảm dung lượng file", "Tăng tốc độ làm việc"],
+          "features_en": ["Reduce file size", "Boost work speed"],
           "tags": [{ "class": "free", "text": "FREE" }],
           "rating": 5,
           "downloads_count": 0,
@@ -515,7 +539,9 @@
           "icon_type": "emoji",
           "icon": "📦",
           "short_desc": "Các đoạn script nhỏ thử nghiệm các tính năng linh tinh.",
+          "short_desc_en": "Small test scripts for miscellaneous features.",
           "features": ["Tính năng thử nghiệm", "Hỗ trợ phụ trợ"],
+          "features_en": ["Experimental features", "Backend support"],
           "tags": [{ "class": "free", "text": "FREE" }],
           "rating": 5,
           "downloads_count": 0,
@@ -532,7 +558,9 @@
           "icon_type": "emoji",
           "icon": "🚪",
           "short_desc": "Chuyên gia thiết kế tủ áo, kệ trang trí thông minh tự động.",
+          "short_desc_en": "Expert automatic designer for wardrobes and decorative shelves.",
           "features": ["Tùy biến đợt hộc", "Tính toán phụ kiện"],
+          "features_en": ["Customize shelves", "Accessory calculation"],
           "tags": [{ "class": "pro", "text": "PRO" }],
           "rating": 5,
           "downloads_count": 0,
@@ -549,7 +577,9 @@
           "icon_type": "emoji",
           "icon": "📌",
           "short_desc": "Hỗ trợ di chuyển và sao chép đối tượng nhanh bằng phím tắt.",
+          "short_desc_en": "Quickly move and copy objects using shortcuts.",
           "features": ["Thao tác nhanh gọn", "Dễ sử dụng"],
+          "features_en": ["Quick operation", "Easy to use"],
           "tags": [{ "class": "free", "text": "FREE" }],
           "rating": 5,
           "downloads_count": 0,
@@ -566,7 +596,9 @@
           "icon_type": "emoji",
           "icon": "📊",
           "short_desc": "Quản lý thông tin thuộc tính BIM cho các đối tượng kiến trúc.",
+          "short_desc_en": "Manage BIM attribute information for architectural objects.",
           "features": ["Gán thuộc tính thông minh", "Xuất báo cáo dữ liệu"],
+          "features_en": ["Smart attribute assignment", "Export data reports"],
           "tags": [{ "class": "pro", "text": "PRO" }, { "class": "hot", "text": "HOT" }],
           "rating": 5,
           "downloads_count": 0,
@@ -583,8 +615,10 @@
           "icon_type": "emoji",
           "icon": "🍳",
           "short_desc": "Thư viện phụ kiện bếp: chậu rửa, vòi, lò nướng, máy hút mùi.",
+          "short_desc_en": "Kitchen accessories library: sinks, faucets, ovens, range hoods.",
           "features": ["Mẫu chuẩn thực tế", "Kích thước chính xác"],
-          "tags": [{ "class": "new", "text": "MỚI" }],
+          "features_en": ["Realistic standards", "Exact dimensions"],
+          "tags": [{ "class": "new", "text": "MỚI", "text_en": "NEW" }],
           "rating": 5,
           "downloads_count": 0,
           "download_url": "DIEN_LINK_TAI_RBZ_13",
@@ -600,7 +634,9 @@
           "icon_type": "emoji",
           "icon": "🏢",
           "short_desc": "Tạo mặt dựng nhôm kính, lam che nắng ngoại thất tự động.",
+          "short_desc_en": "Automatically create glass facades and exterior louvers.",
           "features": ["Tùy chỉnh khoảng cách nan", "Xuất khối lượng nhanh"],
+          "features_en": ["Custom louver spacing", "Fast volume export"],
           "tags": [{ "class": "pro", "text": "PRO" }],
           "rating": 5,
           "downloads_count": 0,
@@ -617,7 +653,9 @@
           "icon_type": "emoji",
           "icon": "🧱",
           "short_desc": "Thư viện vật liệu PBR cao cấp: gạch, bê tông, đá marble.",
+          "short_desc_en": "High-end PBR material library: bricks, concrete, marble.",
           "features": ["Độ phân giải cao", "Tích hợp sẵn Bump/Roughness"],
+          "features_en": ["High resolution", "Built-in Bump/Roughness"],
           "tags": [{ "class": "hot", "text": "HOT" }],
           "rating": 5,
           "downloads_count": 0,
@@ -634,8 +672,10 @@
           "icon_type": "emoji",
           "icon": "🤖",
           "short_desc": "Hỗ trợ gợi ý ý tưởng thiết kế kiến trúc qua trí tuệ nhân tạo.",
+          "short_desc_en": "Support architectural design ideas suggestions via AI.",
           "features": ["Phân tích không gian", "Gợi ý phong cách"],
-          "tags": [{ "class": "new", "text": "MỚI" }],
+          "features_en": ["Space analysis", "Style suggestions"],
+          "tags": [{ "class": "new", "text": "MỚI", "text_en": "NEW" }],
           "rating": 5,
           "downloads_count": 0,
           "download_url": "DIEN_LINK_TAI_RBZ_16",
@@ -651,7 +691,9 @@
           "icon_type": "emoji",
           "icon": "📁",
           "short_desc": "Sắp xếp và chuẩn hóa tên Tag/Layer theo tiêu chuẩn văn phòng.",
+          "short_desc_en": "Organize and standardize Tag/Layer names to office standards.",
           "features": ["Lọc tag nhanh", "Đổi tên hàng loạt"],
+          "features_en": ["Quick tag filtering", "Batch rename"],
           "tags": [{ "class": "free", "text": "FREE" }],
           "rating": 5,
           "downloads_count": 0,
@@ -668,7 +710,9 @@
           "icon_type": "emoji",
           "icon": "📝",
           "short_desc": "Tiện ích ghi chú công việc trực tiếp trong giao diện dự án.",
+          "short_desc_en": "Task note utility directly within the project interface.",
           "features": ["Ghi chú nhanh", "Lưu trữ nội dung project"],
+          "features_en": ["Quick notes", "Store project content"],
           "tags": [{ "class": "free", "text": "FREE" }],
           "rating": 5,
           "downloads_count": 0,
@@ -685,7 +729,9 @@
           "icon_type": "emoji",
           "icon": "📋",
           "short_desc": "Tối ưu hóa sơ đồ cắt ván gỗ công nghiệp, xuất báo cáo vật liệu.",
+          "short_desc_en": "Optimize industrial wood cutting diagrams, export material reports.",
           "features": ["Sơ đồ cắt tối ưu", "Thống kê phụ kiện"],
+          "features_en": ["Optimized cut diagrams", "Accessory statistics"],
           "tags": [{ "class": "pro", "text": "PRO" }, { "class": "hot", "text": "HOT" }],
           "rating": 5,
           "downloads_count": 0,
@@ -702,7 +748,9 @@
           "icon_type": "emoji",
           "icon": "🚀",
           "short_desc": "Xuất hàng loạt file ảnh, định dạng CAD/OBJ từ các scene đã tạo.",
+          "short_desc_en": "Batch export images, CAD/OBJ formats from created scenes.",
           "features": ["Xuất ảnh độ phân giải cao", "Tự động hóa tác vụ"],
+          "features_en": ["High-res image export", "Task automation"],
           "tags": [{ "class": "pro", "text": "PRO" }],
           "rating": 5,
           "downloads_count": 0,
@@ -722,11 +770,14 @@
       const catBar = document.getElementById('categoriesBar');
       if (!storeData.categories) return;
 
-      catBar.innerHTML = storeData.categories.map(cat => `
-        <button class="cat-btn ${cat.id === currentCategory ? 'active' : ''}" onclick="filterCategory('${cat.id}')">
-          ${cat.label}
-        </button>
-      `).join('');
+      catBar.innerHTML = storeData.categories.map(cat => {
+        const labelText = currentLang === 'EN' ? (cat.label_en || cat.label) : cat.label;
+        return `
+          <button class="cat-btn ${cat.id === currentCategory ? 'active' : ''}" onclick="filterCategory('${cat.id}')">
+            ${labelText}
+          </button>
+        `;
+      }).join('');
 
       renderPluginsList();
     }
@@ -739,12 +790,12 @@
         const matchCategory = currentCategory === 'tab_01' || p.category === currentCategory;
         const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                             p.short_desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            (p.full_desc && p.full_desc.toLowerCase().includes(searchQuery.toLowerCase()));
+                            (p.short_desc_en && p.short_desc_en.toLowerCase().includes(searchQuery.toLowerCase()));
         return matchCategory && matchSearch;
       });
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 30px; font-size: 11px;">Không tìm thấy plugin phù hợp trong danh mục này.</div>`;
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 30px; font-size: 11px; font-weight: bold;">${currentLang === 'EN' ? 'No matching plugins found in this category.' : 'Không tìm thấy plugin phù hợp trong danh mục này.'}</div>`;
         return;
       }
 
@@ -756,8 +807,11 @@
         const ratingVal = p.rating || 5;
         let starsHtml = '';
         for (let i = 1; i <= 5; i++) {
-          starsHtml += `<span onclick="ratePlugin('${p.id}', ${i})" title="Đánh giá ${i} sao">${i <= ratingVal ? '★' : '☆'}</span>`;
+          starsHtml += `<span onclick="ratePlugin('${p.id}', ${i})" title="${currentLang === 'EN' ? 'Rate ' + i + ' stars' : 'Đánh giá ' + i + ' sao'}">${i <= ratingVal ? '★' : '☆'}</span>`;
         }
+
+        const descText = currentLang === 'EN' ? (p.short_desc_en || p.short_desc) : (p.short_desc || p.desc || '');
+        const featuresArr = currentLang === 'EN' ? (p.features_en || p.features) : (p.features || []);
 
         return `
         <div class="plugin-card" id="card-${p.id}">
@@ -776,36 +830,39 @@
               </div>
             </div>
 
-            <p class="plugin-desc">${p.short_desc || p.desc || ''}</p>
+            <p class="plugin-desc">${descText}</p>
 
-            ${p.features && p.features.length > 0 ? `
+            ${featuresArr && featuresArr.length > 0 ? `
               <ul class="features-list">
-                ${p.features.map(f => `<li>${f}</li>`).join('')}
+                ${featuresArr.map(f => `<li>${f}</li>`).join('')}
               </ul>
             ` : ''}
 
             <div class="plugin-tags">
-              ${p.tags ? p.tags.map(t => `<span class="tag ${t.class}">${t.text}</span>`).join('') : ''}
+              ${p.tags ? p.tags.map(t => {
+                const tagText = currentLang === 'EN' ? (t.text_en || t.text) : t.text;
+                return `<span class="tag ${t.class}">${tagText}</span>`;
+              }).join('') : ''}
             </div>
           </div>
 
           <div class="plugin-actions">
             ${p.activated 
-              ? `<button class="btn-active">✔ Đang kích hoạt</button>`
+              ? `<button class="btn-active">${currentLang === 'EN' ? '✔ Activated' : '✔ Đang kích hoạt'}</button>`
               : `<button class="btn-download" onclick="downloadPlugin('${p.id}', '${p.download_url}')">
-                  ⬇ Tải RBZ
+                  ${currentLang === 'EN' ? '⬇ Download RBZ' : '⬇ Tải RBZ'}
                  </button>`
             }
             
             ${p.guide_url ? `
-              <button class="btn-action-sec" onclick="openExternalUrl('${p.guide_url}')" title="Xem hướng dẫn">
+              <button class="btn-action-sec" onclick="openExternalUrl('${p.guide_url}')" title="${currentLang === 'EN' ? 'View guide' : 'Xem hướng dẫn'}">
                 📖 Web
               </button>
             ` : ''}
 
             ${p.video_url ? `
-              <button class="btn-action-sec" onclick="openVideoModal('${p.video_url}')" title="Xem video Demo YouTube">
-                ▶ Video
+              <button class="btn-action-sec" onclick="openVideoModal('${p.video_url}')" title="${currentLang === 'EN' ? 'Watch Demo Video' : 'Xem video Demo YouTube'}">
+                ▶ ${currentLang === 'EN' ? 'Video' : 'Video'}
               </button>
             ` : ''}
           </div>
@@ -840,13 +897,87 @@
       const subTitle = document.getElementById('sub-title-text');
       const searchBox = document.getElementById('searchInput');
 
+      // Login Step 1 UI translations
+      const loginTitle = document.getElementById('txt-login-title');
+      const loginDesc = document.getElementById('txt-login-desc');
+      const emailLabel = document.getElementById('txt-email-label');
+      const passLabel = document.getElementById('txt-pass-label');
+      const btnLogin = document.getElementById('btnLogin');
+      const btnRequest = document.getElementById('btnRequest');
+
+      // Login Step 2 UI translations
+      const otpTitle = document.getElementById('txt-otp-title');
+      const otpDesc = document.getElementById('txt-otp-desc');
+      const otpLabel = document.getElementById('txt-otp-label');
+      const btnVerify = document.getElementById('btnVerify');
+      const backBtn = document.getElementById('txt-back-btn');
+
+      // Header & Footer UI translations
+      const storeName = document.getElementById('txt-store-name');
+      const ytBtn = document.getElementById('txt-yt-btn');
+      const logoutBtn = document.getElementById('txt-logout-btn');
+      const authorText = document.getElementById('txt-author');
+      const authorDesc = document.getElementById('txt-author-desc');
+      const zaloText = document.getElementById('txt-zalo');
+      const fbText = document.getElementById('txt-fb');
+      const webText = document.getElementById('txt-web');
+      const closeModalBtn = document.getElementById('txt-close-modal');
+
       if (lang === 'EN') {
         subTitle.innerText = "Curated SketchUp Extensions & Automation Store";
         searchBox.placeholder = "Search plugins...";
+
+        loginTitle.innerText = "Store Login";
+        loginDesc.innerText = "Enter Email & Password to login or Register to receive OTP code.";
+        emailLabel.innerText = "Email Address";
+        passLabel.innerText = "Password";
+        btnLogin.innerText = "Login";
+        btnRequest.innerText = "Register (Receive OTP via Email)";
+
+        otpTitle.innerText = "Registration Confirmation";
+        otpDesc.innerText = "A 6-digit OTP code has been sent to your Email. (Expires in 5 minutes)";
+        otpLabel.innerText = "OTP Code (6 digits)";
+        btnVerify.innerText = "Confirm Registration";
+        backBtn.innerText = "Go Back";
+
+        storeName.innerText = "THOVE-NB STORE";
+        ytBtn.innerText = "▶ Subscribe YT";
+        logoutBtn.innerText = "Logout";
+        authorText.innerText = "Author: Nguyen Ban (THOVE-NB)";
+        authorDesc.innerText = "Specializing in custom SketchUp Plugin development & interior manufacturing automation.";
+        zaloText.innerText = "Zalo Support";
+        fbText.innerText = "Personal Facebook";
+        webText.innerText = "Personal Website";
+        closeModalBtn.innerText = "✕ Close";
       } else {
         subTitle.innerText = "Kho tiện ích SketchUp chọn lọc & Tự động hóa";
         searchBox.placeholder = "Tìm kiếm plugin...";
+
+        loginTitle.innerText = "Đăng Nhập Store";
+        loginDesc.innerText = "Nhập Email & Mật khẩu để đăng nhập hoặc Đăng ký nhận mã OTP.";
+        emailLabel.innerText = "Địa chỉ Email";
+        passLabel.innerText = "Mật khẩu";
+        btnLogin.innerText = "Đăng Nhập";
+        btnRequest.innerText = "Đăng Ký (Nhận OTP qua Email)";
+
+        otpTitle.innerText = "Xác Nhận Đăng Ký";
+        otpDesc.innerText = "Mã OTP 6 số đã được gửi tới Email của bạn. (Hết hạn sau 5 phút)";
+        otpLabel.innerText = "Mã OTP (6 số)";
+        btnVerify.innerText = "Xác Nhận Đăng Ký";
+        backBtn.innerText = "Quay Lại";
+
+        storeName.innerText = "THOVE-NB STORE";
+        ytBtn.innerText = "▶ Đăng Ký YT";
+        logoutBtn.innerText = "Đăng xuất";
+        authorText.innerText = "Tác giả: Nguyễn Bân (THOVE-NB)";
+        authorDesc.innerText = "Chuyên lập trình Plugin SketchUp theo yêu cầu & Tự động hóa sản xuất nội thất.";
+        zaloText.innerText = "Zalo Tư Vấn";
+        fbText.innerText = "Facebook Cá Nhân";
+        webText.innerText = "Website Cá Nhân";
+        closeModalBtn.innerText = "✕ Đóng";
       }
+
+      initStoreUI();
     }
 
     function downloadPlugin(pluginId, downloadUrl) {
@@ -860,7 +991,7 @@
       if (typeof sketchup !== 'undefined' && sketchup.download_plugin) {
         sketchup.download_plugin(pluginId, downloadUrl);
       } else {
-        alert("Đang kích hoạt tải về trực tiếp từ SketchUp:\n" + downloadUrl);
+        alert((currentLang === 'EN' ? "Activating direct download from SketchUp:\n" : "Đang kích hoạt tải về trực tiếp từ SketchUp:\n") + downloadUrl);
       }
     }
 
@@ -920,9 +1051,13 @@
       const btnLog = document.getElementById('btnLogin');
       const btnReq = document.getElementById('btnRequest');
 
-      if (!email || !pass) { msg1.innerText = "Vui lòng nhập Email và Mật khẩu!"; return; }
+      if (!email || !pass) { 
+        msg1.innerText = currentLang === 'EN' ? "Please enter Email and Password!" : "Vui lòng nhập Email và Mật khẩu!"; 
+        return; 
+      }
 
-      btnLog.innerText = "Đang kiểm tra..."; btnLog.disabled = true; btnReq.disabled = true; msg1.innerText = "";
+      btnLog.innerText = currentLang === 'EN' ? "Checking..." : "Đang kiểm tra..."; 
+      btnLog.disabled = true; btnReq.disabled = true; msg1.innerText = "";
 
       try {
         const response = await fetch(GAS_URL, {
@@ -937,9 +1072,12 @@
         } else {
           msg1.innerText = data.message;
         }
-      } catch (e) { msg1.innerText = "Lỗi kết nối đến máy chủ!"; }
+      } catch (e) { 
+        msg1.innerText = currentLang === 'EN' ? "Connection error to server!" : "Lỗi kết nối đến máy chủ!"; 
+      }
       
-      btnLog.innerText = "Đăng Nhập"; btnLog.disabled = false; btnReq.disabled = false;
+      btnLog.innerText = currentLang === 'EN' ? "Login" : "Đăng Nhập"; 
+      btnLog.disabled = false; btnReq.disabled = false;
     }
 
     async function requestOTP() {
@@ -950,10 +1088,17 @@
       const btnReq = document.getElementById('btnRequest');
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!email || !pass) { msg1.innerText = "Vui lòng nhập Email và Mật khẩu!"; return; }
-      if (!emailRegex.test(email)) { msg1.innerText = "Định dạng Email không hợp lệ!"; return; }
+      if (!email || !pass) { 
+        msg1.innerText = currentLang === 'EN' ? "Please enter Email and Password!" : "Vui lòng nhập Email và Mật khẩu!"; 
+        return; 
+      }
+      if (!emailRegex.test(email)) { 
+        msg1.innerText = currentLang === 'EN' ? "Invalid Email format!" : "Định dạng Email không hợp lệ!"; 
+        return; 
+      }
 
-      btnReq.innerText = "Đang gửi Email..."; btnReq.disabled = true; btnLog.disabled = true; msg1.innerText = "";
+      btnReq.innerText = currentLang === 'EN' ? "Sending Email..." : "Đang gửi Email..."; 
+      btnReq.disabled = true; btnLog.disabled = true; msg1.innerText = "";
 
       try {
         const response = await fetch(GAS_URL, {
@@ -968,9 +1113,12 @@
         } else {
           msg1.innerText = data.message;
         }
-      } catch (e) { msg1.innerText = "Lỗi kết nối đến máy chủ!"; }
+      } catch (e) { 
+        msg1.innerText = currentLang === 'EN' ? "Connection error to server!" : "Lỗi kết nối đến máy chủ!"; 
+      }
       
-      btnReq.innerText = "Đăng Ký (Nhận OTP qua Email)"; btnReq.disabled = false; btnLog.disabled = false;
+      btnReq.innerText = currentLang === 'EN' ? "Register (Receive OTP via Email)" : "Đăng Ký (Nhận OTP qua Email)"; 
+      btnReq.disabled = false; btnLog.disabled = false;
     }
 
     async function verifyOTP() {
@@ -980,9 +1128,13 @@
       const msg2 = document.getElementById('msg2');
       const btn = document.getElementById('btnVerify');
 
-      if (!otp) { msg2.innerText = "Vui lòng nhập mã OTP!"; return; }
+      if (!otp) { 
+        msg2.innerText = currentLang === 'EN' ? "Please enter OTP code!" : "Vui lòng nhập mã OTP!"; 
+        return; 
+      }
 
-      btn.innerText = "Đang xác nhận..."; btn.disabled = true; msg2.innerText = "";
+      btn.innerText = currentLang === 'EN' ? "Verifying..." : "Đang xác nhận..."; 
+      btn.disabled = true; msg2.innerText = "";
 
       try {
         const response = await fetch(GAS_URL, {
@@ -997,9 +1149,12 @@
         } else {
           msg2.innerText = data.message;
         }
-      } catch (e) { msg2.innerText = "Lỗi kết nối đến máy chủ!"; }
+      } catch (e) { 
+        msg2.innerText = currentLang === 'EN' ? "Connection error to server!" : "Lỗi kết nối đến máy chủ!"; 
+      }
       
-      btn.innerText = "Xác Nhận Đăng Ký"; btn.disabled = false;
+      btn.innerText = currentLang === 'EN' ? "Confirm Registration" : "Xác Nhận Đăng Ký"; 
+      btn.disabled = false;
     }
 
     function cancelOTP() {
