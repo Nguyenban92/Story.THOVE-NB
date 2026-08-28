@@ -876,6 +876,7 @@
     function openVideoModal(url) {
       if (!url) return;
       let embedUrl = url;
+      
       if (url.includes("watch?v=")) {
         embedUrl = url.replace("watch?v=", "embed/");
       } else if (url.includes("youtu.be/")) {
@@ -886,10 +887,13 @@
         embedUrl = embedUrl.replace("youtube.com", "youtube-nocookie.com");
       }
 
+      let separator = embedUrl.includes("?") ? "&" : "?";
+      let finalVideoUrl = embedUrl + separator + "autoplay=1&enablejsapi=1";
+
       const modal = document.getElementById('videoModal');
       const iframe = document.getElementById('youtubeIframe');
       
-      iframe.src = embedUrl + "?autoplay=1";
+      iframe.src = finalVideoUrl;
       modal.classList.remove('hidden');
     }
 
