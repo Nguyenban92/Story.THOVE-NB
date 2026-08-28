@@ -81,6 +81,9 @@
     .youtube-btn { cursor: pointer; color: #ffffff; background: var(--orange-main); padding: 5px 10px; border-radius: 6px; font-size: 10px; font-weight: bold; border: 1px solid var(--orange-main); transition: 0.2s; display: flex; align-items: center; gap: 3px; }
     .youtube-btn:hover { background: var(--orange-hover); }
 
+    .entertainment-btn { cursor: pointer; color: #ffffff; background: #ef4444; padding: 5px 10px; border-radius: 6px; font-size: 10px; font-weight: bold; border: 1px solid #ef4444; transition: 0.2s; display: flex; align-items: center; gap: 3px; }
+    .entertainment-btn:hover { background: #dc2626; }
+
     .logout-btn { cursor: pointer; color: #ff4d4d; padding: 5px 10px; background: rgba(255, 77, 77, 0.1); border-radius: 6px; font-size: 10px; font-weight: bold; border: 1px solid rgba(255, 77, 77, 0.3); transition: 0.2s; }
     .logout-btn:hover { background: rgba(255, 77, 77, 0.2); }
 
@@ -182,7 +185,7 @@
       padding: 6px 16px;
     }
     .footer-left { display: flex; align-items: center; gap: 10px; }
-    .qr-box { width: 82px; height: 82px; background: white; border-radius: 5px; padding: 2px; flex-shrink: 0; }
+    .qr-box { width: 52px; height: 52px; background: white; border-radius: 5px; padding: 2px; flex-shrink: 0; }
     .qr-box img { width: 100%; height: 100%; object-fit: contain; }
     
     .author-info h4 { font-size: 11px; margin-bottom: 1px; color: white; font-weight: bold; }
@@ -191,7 +194,7 @@
     .social-links a { text-decoration: none; font-size: 8px; color: var(--text-muted); border: 1px solid var(--border-color); padding: 1px 5px; border-radius: 6px; background: var(--bg-main); transition: 0.2s; font-weight: bold; }
     .social-links a:hover { color: white; border-color: var(--text-muted); }
     
-    .footer-right img { height: 85px; opacity: 1; object-fit: contain; }
+    .footer-right img { height: 55px; opacity: 1; object-fit: contain; }
 
     .modal-overlay {
       position: fixed;
@@ -303,6 +306,7 @@
         </div>
       </div>
       <div class="header-right">
+        <button class="entertainment-btn" onclick="openVideoModal('https://youtu.be/MjE3Yxrv5NY?si=hHt_xeIvtXaJJhZU')" title="Giải Trí YouTube" id="txt-ent-btn">🎵 Giải Trí</button>
         <div class="search-box">
           <span style="color: var(--text-muted); font-size: 11px;">🔍</span>
           <input type="text" id="searchInput" oninput="onSearchInput()" placeholder="Tìm kiếm plugin...">
@@ -909,6 +913,7 @@
       const backBtn = document.getElementById('txt-back-btn');
 
       const storeName = document.getElementById('txt-store-name');
+      const entBtn = document.getElementById('txt-ent-btn');
       const ytBtn = document.getElementById('txt-yt-btn');
       const logoutBtn = document.getElementById('txt-logout-btn');
       const authorText = document.getElementById('txt-author');
@@ -936,6 +941,7 @@
         backBtn.innerText = "Go Back";
 
         storeName.innerText = "THOVE-NB STORE";
+        entBtn.innerText = "🎵 Entertainment";
         ytBtn.innerText = "▶ Subscribe YT";
         logoutBtn.innerText = "Logout";
         authorText.innerText = "Author: Nguyen Ban (THOVE-NB)";
@@ -962,6 +968,7 @@
         backBtn.innerText = "Quay Lại";
 
         storeName.innerText = "THOVE-NB STORE";
+        entBtn.innerText = "🎵 Giải Trí";
         ytBtn.innerText = "▶ Đăng Ký YT";
         logoutBtn.innerText = "Đăng xuất";
         authorText.innerText = "Tác giả: Nguyễn Bân (THOVE-NB)";
