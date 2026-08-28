@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>THOVE-NB Extension Store</title>
+  <!-- THẺ META QUAN TRỌNG ĐỂ TRÁNH LỖI 153 -->
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <style>
+    /* BẢNG MÀU GIAO DIỆN DARK MODE CHUYÊN NGHIỆP */
     :root {
       --bg-main: #0a1118;      
       --bg-panel: #131e2b;       
@@ -24,8 +26,10 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    
     body { background-color: var(--bg-main); color: var(--text-main); height: 100vh; overflow: hidden; padding: 12px; }
 
+    /* LỚP PHỦ ĐĂNG NHẬP / ĐĂNG KÝ OTP */
     .login-wrapper { display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; position: fixed; top: 0; left: 0; z-index: 999; background: rgba(10, 17, 24, 0.95); backdrop-filter: blur(8px); }
     .login-container { background: var(--bg-panel); border: 1px solid var(--border-color); padding: 32px; border-radius: 12px; width: 380px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
     .login-container h2 { text-align: center; margin-bottom: 16px; color: var(--orange-main); font-size: 20px; }
@@ -41,10 +45,30 @@
     .msg-error { color: #ff4d4d; font-size: 12px; margin-top: 12px; text-align: center; min-height: 16px; }
     .hidden { display: none !important; }
 
-    #store-ui { max-width: 1350px; margin: 0 auto; height: calc(100vh - 24px); display: flex; flex-direction: column; }
-    .panel { background: var(--bg-panel); border: 1px solid var(--border-color); border-radius: 10px; padding: 12px 20px; }
+    /* GIAO DIỆN STORE CỐ ĐỊNH ĐẦU & ĐÁY (TỶ LỆ 0.8) */
+    #store-ui { 
+      max-width: 1350px; 
+      margin: 0 auto; 
+      height: calc(100vh - 24px); 
+      display: flex;
+      flex-direction: column;
+    }
 
-    .store-header { display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; margin-bottom: 8px; }
+    .panel { 
+      background: var(--bg-panel); 
+      border: 1px solid var(--border-color); 
+      border-radius: 10px; 
+      padding: 12px 20px; 
+    }
+
+    /* 1. TOOLBAR CỐ ĐỊNH Ở PHÍA TRÊN */
+    .store-header { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      flex-shrink: 0; 
+      margin-bottom: 8px;
+    }
     .header-left { display: flex; align-items: center; gap: 12px; }
     .header-left img { width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--border-color); object-fit: cover; }
     .header-left h1 { font-size: 15px; color: white; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; }
@@ -60,21 +84,57 @@
     .logout-btn { cursor: pointer; color: #ff4d4d; padding: 5px 10px; background: rgba(255, 77, 77, 0.1); border-radius: 6px; font-size: 10px; font-weight: bold; border: 1px solid rgba(255, 77, 77, 0.3); transition: 0.2s; }
     .logout-btn:hover { background: rgba(255, 77, 77, 0.2); }
 
-    .main-scroll-area { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 4px; margin-bottom: 8px; }
+    /* 2. KHU VỰC NỘI DUNG Ở GIỮA */
+    .main-scroll-area {
+      flex: 1;               
+      overflow-y: auto;      
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-right: 4px;        
+      margin-bottom: 8px;
+    }
     .main-scroll-area::-webkit-scrollbar { width: 5px; }
     .main-scroll-area::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
     .main-scroll-area::-webkit-scrollbar-thumb:hover { background: var(--orange-main); }
 
-    .categories-bar { display: flex; gap: 6px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }
+    /* THANH TAB 10 CHỨC NĂNG THU NHỎ (0.8) */
+    .categories-bar { 
+      display: flex; 
+      gap: 6px; 
+      flex-wrap: nowrap; 
+      overflow-x: auto; 
+      padding-bottom: 4px;
+    }
     .categories-bar::-webkit-scrollbar { height: 3px; }
     .categories-bar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
 
-    .cat-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 5px 12px; border-radius: 16px; cursor: pointer; font-size: 10.5px; font-weight: 500; white-space: nowrap; transition: 0.2s; }
+    .cat-btn { 
+      background: transparent; 
+      border: 1px solid var(--border-color); 
+      color: var(--text-muted); 
+      padding: 5px 12px; 
+      border-radius: 16px; 
+      cursor: pointer; 
+      font-size: 10.5px; 
+      font-weight: 500; 
+      white-space: nowrap;
+      transition: 0.2s; 
+    }
     .cat-btn.active, .cat-btn:hover { background: var(--orange-main); color: white; border-color: var(--orange-main); }
 
-    .store-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    @media (max-width: 1100px) { .store-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 700px) { .store-grid { grid-template-columns: 1fr; } }
+    /* LƯỚI CARD PLUGIN - CHIA ĐÚNG 3 CỘT */
+    .store-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 12px; 
+    }
+    @media (max-width: 1100px) {
+      .store-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .store-grid { grid-template-columns: 1fr; }
+    }
 
     .plugin-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.2s; }
     .plugin-card:hover { border-color: #3b5570; }
@@ -114,7 +174,14 @@
     .btn-action-sec:hover { border-color: var(--text-muted); color: white; background: rgba(255, 255, 255, 0.05); }
     .btn-active { flex: 2; background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-text); border-radius: 5px; padding: 6px; font-weight: bold; font-size: 10px; cursor: default; text-align: center; }
 
-    .store-footer { display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; padding: 8px 20px; }
+    /* 3. FOOTER CỐ ĐỊNH ĐÁY */
+    .store-footer { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      flex-shrink: 0; 
+      padding: 8px 20px;
+    }
     .footer-left { display: flex; align-items: center; gap: 10px; }
     .qr-box { width: 65px; height: 65px; background: white; border-radius: 5px; padding: 2px; }
     .qr-box img { width: 100%; height: 100%; object-fit: contain; }
@@ -127,13 +194,63 @@
     
     .footer-right img { height: 75px; opacity: 1; }
 
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 9999; backdrop-filter: blur(4px); }
-    .modal-overlay.hidden { display: none !important; }
-    .modal-content { background: var(--bg-panel); border: 1px solid var(--border-color); width: 85%; max-width: 720px; border-radius: 10px; padding: 12px; box-shadow: 0 12px 35px rgba(0,0,0,0.8); position: relative; }
-    .modal-close-btn { background: #ff4d4d; color: #fff; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 11px; float: right; margin-bottom: 8px; transition: background 0.2s; }
+    /* MODAL XEM YOUTUBE TRỰC TIẾP */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.hidden {
+      display: none !important;
+    }
+    .modal-content {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      width: 85%;
+      max-width: 720px;
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.8);
+      position: relative;
+    }
+    .modal-close-btn {
+      background: #ff4d4d;
+      color: #fff;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 11px;
+      float: right;
+      margin-bottom: 8px;
+      transition: background 0.2s;
+    }
     .modal-close-btn:hover { background: #ff1a1a; }
-    .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; clear: both; }
-    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 6px; border: none; }
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      clear: both;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -141,20 +258,20 @@
   <!-- BƯỚC 1: ĐĂNG NHẬP -->
   <div id="step1" class="login-wrapper">
     <div class="login-container">
-      <h2 data-i18n="login_title">Đăng Nhập Store</h2>
-      <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px; text-align: center;" data-i18n="login_desc">
+      <h2>Đăng Nhập Store</h2>
+      <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px; text-align: center;">
         Nhập Email & Mật khẩu để đăng nhập hoặc Đăng ký nhận mã OTP.
       </p>
       <div class="input-group">
-        <label data-i18n="label_email">Địa chỉ Email</label>
-        <input type="email" id="email" placeholder="name@gmail.com" required>
+        <label>Địa chỉ Email</label>
+        <input type="email" id="email" placeholder="Ví dụ: name@gmail.com" required>
       </div>
       <div class="input-group">
-        <label data-i18n="label_pass">Mật khẩu</label>
-        <input type="password" id="password" placeholder="••••••••" required>
+        <label>Mật khẩu</label>
+        <input type="password" id="password" placeholder="Nhập mật khẩu" required>
       </div>
-      <button class="auth-btn" onclick="loginUser()" id="btnLogin" data-i18n="btn_login">Đăng Nhập</button>
-      <button class="auth-btn secondary" onclick="requestOTP()" id="btnRequest" data-i18n="btn_register">Đăng Ký (Nhận OTP qua Email)</button>
+      <button class="auth-btn" onclick="loginUser()" id="btnLogin">Đăng Nhập</button>
+      <button class="auth-btn secondary" onclick="requestOTP()" id="btnRequest">Đăng Ký (Nhận OTP qua Email)</button>
       <div id="msg1" class="msg-error"></div>
     </div>
   </div>
@@ -162,16 +279,16 @@
   <!-- BƯỚC 2: NHẬP OTP -->
   <div id="step2" class="login-wrapper hidden">
     <div class="login-container">
-      <h2 data-i18n="otp_title">Xác Nhận Đăng Ký</h2>
-      <p style="text-align: center; font-size: 11px; color: var(--text-muted); margin-bottom: 16px;" data-i18n="otp_desc">
+      <h2>Xác Nhận Đăng Ký</h2>
+      <p style="text-align: center; font-size: 11px; color: var(--text-muted); margin-bottom: 16px;">
         Mã OTP 6 số đã được gửi tới Email của bạn. (Hết hạn sau 5 phút)
       </p>
       <div class="input-group">
-        <label data-i18n="label_otp">Mã OTP (6 số)</label>
-        <input type="number" id="otp" placeholder="123456" required>
+        <label>Mã OTP (6 số)</label>
+        <input type="number" id="otp" placeholder="Nhập mã OTP" required>
       </div>
-      <button class="auth-btn" onclick="verifyOTP()" id="btnVerify" data-i18n="btn_verify">Xác Nhận Đăng Ký</button>
-      <button class="auth-btn cancel" onclick="cancelOTP()" data-i18n="btn_back">Quay Lại</button>
+      <button class="auth-btn" onclick="verifyOTP()" id="btnVerify">Xác Nhận Đăng Ký</button>
+      <button class="auth-btn cancel" onclick="cancelOTP()">Quay Lại</button>
       <div id="msg2" class="msg-error"></div>
     </div>
   </div>
@@ -179,46 +296,50 @@
   <!-- BƯỚC 3: GIAO DIỆN STORE -->
   <div id="store-ui" class="hidden">
     
+    <!-- TOOLBAR CỐ ĐỊNH TRÊN -->
     <div class="panel store-header">
       <div class="header-left">
         <img id="header-logo" src="https://i.ibb.co/wZ6J60gC/icon.png" alt="Avatar">
         <div>
           <h1>THOVE-NB STORE</h1>
-          <p id="sub-title-text" data-i18n="store_subtitle">Kho tiện ích SketchUp chọn lọc & Tự động hóa</p>
+          <p id="sub-title-text">Kho tiện ích SketchUp chọn lọc & Tự động hóa</p>
         </div>
       </div>
       <div class="header-right">
         <div class="search-box">
           <span style="color: var(--text-muted); font-size: 11px;">🔍</span>
-          <input type="text" id="searchInput" oninput="onSearchInput()" placeholder="Tìm kiếm plugin..." data-i18n-placeholder="search_placeholder">
+          <input type="text" id="searchInput" oninput="onSearchInput()" placeholder="Tìm kiếm plugin...">
         </div>
         <div class="lang-toggle">
           <button class="lang-btn active" id="btnLangVI" onclick="switchLanguage('VI')">VI</button>
           <button class="lang-btn" id="btnLangEN" onclick="switchLanguage('EN')">EN</button>
         </div>
-        <button class="logout-btn" onclick="logout()" title="Đăng Xuất" data-i18n="btn_logout">Đăng xuất</button>
+        <button class="logout-btn" onclick="logout()" title="Đăng Xuất">Đăng xuất</button>
       </div>
     </div>
 
+    <!-- VÙNG NỘI DUNG GIỮA -->
     <div class="main-scroll-area">
       <div class="panel" style="margin-bottom: 0; padding: 8px 16px;">
+        <!-- ĐÃ ĐƯỢC THIẾT KẾ ĐỦ 10 TAB CHỨC NĂNG -->
         <div class="categories-bar" id="categoriesBar"></div>
       </div>
       <div class="store-grid" id="pluginsGrid"></div>
     </div>
 
+    <!-- FOOTER CỐ ĐỊNH ĐÁY -->
     <div class="panel store-footer">
       <div class="footer-left">
         <div class="qr-box">
           <img src="https://i.ibb.co/1JJ3LMYF/Screenshot-2026-08-25-035615.png" alt="QR">
         </div>
         <div class="author-info">
-          <h4 data-i18n="author_name">Tác giả: Nguyễn Bân (THOVE-NB)</h4>
-          <p data-i18n="author_desc">Chuyên lập trình Plugin SketchUp theo yêu cầu & Tự động hóa sản xuất nội thất.</p>
+          <h4>Tác giả: Nguyễn Bân (THOVE-NB)</h4>
+          <p>Chuyên lập trình Plugin SketchUp theo yêu cầu & Tự động hóa sản xuất nội thất.</p>
           <div class="social-links">
-            <a href="https://zalo.me" target="_blank" data-i18n="link_zalo">Zalo Tư Vấn</a>
-            <a href="https://facebook.com" target="_blank" data-i18n="link_fb">Facebook Cá Nhân</a>
-            <a href="https://thovenb.com" target="_blank" data-i18n="link_web">Website Cá Nhân</a>
+            <a href="https://zalo.me" target="_blank">Zalo Tư Vấn</a>
+            <a href="https://facebook.com" target="_blank">Facebook Cá Nhân</a>
+            <a href="https://thovenb.com" target="_blank">Website Cá Nhân</a>
           </div>
         </div>
       </div>
@@ -229,10 +350,12 @@
 
   </div>
 
+  <!-- MODAL XEM VIDEO YOUTUBE TRỰC TIẾP -->
   <div id="videoModal" class="modal-overlay hidden">
     <div class="modal-content">
-      <button class="modal-close-btn" onclick="closeVideoModal()" data-i18n="btn_close">✕ Đóng</button>
+      <button class="modal-close-btn" onclick="closeVideoModal()">✕ Đóng</button>
       <div class="video-container">
+        <!-- ĐÃ THÊM referrerpolicy="strict-origin-when-cross-origin" ĐỂ CHỐNG LỖI 153 -->
         <iframe id="youtubeIframe" 
                 src="" 
                 title="YouTube video player" 
@@ -246,73 +369,86 @@
 
   <script>
     const GAS_URL = "https://script.google.com/macros/s/AKfycbykbmPWwPKLy2HGOiN3sOJwSBzPBvTOEPppL7uqY4pUKGJSVIYDqQQvTSpS3p6SlH1B/exec";
-    const GITHUB_JSON_URL = "https://gist.githubusercontent.com/Nguyenban92/8c01686e2af50a5793b25229a1b894c1/raw/e65f121a2b9dccb08cb750773a6e80866ad0a2fd/Plugin.json";
-
-    // TỪ ĐIỂN SONG NGỮ VI / EN CHO TOÀN BỘ GIAO DIỆN CỐ ĐỊNH
-    const i18n = {
-      VI: {
-        login_title: "Đăng Nhập Store",
-        login_desc: "Nhập Email & Mật khẩu để đăng nhập hoặc Đăng ký nhận mã OTP.",
-        label_email: "Địa chỉ Email",
-        label_pass: "Mật khẩu",
-        btn_login: "Đăng Nhập",
-        btn_register: "Đăng Ký (Nhận OTP qua Email)",
-        otp_title: "Xác Nhận Đăng Ký",
-        otp_desc: "Mã OTP 6 số đã được gửi tới Email của bạn. (Hết hạn sau 5 phút)",
-        label_otp: "Mã OTP (6 số)",
-        btn_verify: "Xác Nhận Đăng Ký",
-        btn_back: "Quay Lại",
-        store_subtitle: "Kho tiện ích SketchUp chọn lọc & Tự động hóa",
-        search_placeholder: "Tìm kiếm plugin...",
-        btn_logout: "Đăng xuất",
-        author_name: "Tác giả: Nguyễn Bân (THOVE-NB)",
-        author_desc: "Chuyên lập trình Plugin SketchUp theo yêu cầu & Tự động hóa sản xuất nội thất.",
-        link_zalo: "Zalo Tư Vấn",
-        link_fb: "Facebook Cá Nhân",
-        link_web: "Website Cá Nhân",
-        btn_close: "✕ Đóng",
-        btn_dl: "⬇ Tải RBZ",
-        btn_web: "📖 Web",
-        btn_video: "▶ Video",
-        btn_activated: "✔ Đang kích hoạt",
-        no_plugin: "Không tìm thấy plugin phù hợp trong danh mục này."
-      },
-      EN: {
-        login_title: "Store Login",
-        login_desc: "Enter Email & Password to login or Register via OTP code.",
-        label_email: "Email Address",
-        label_pass: "Password",
-        btn_login: "Login",
-        btn_register: "Register (Get OTP via Email)",
-        otp_title: "Confirm Registration",
-        otp_desc: "A 6-digit OTP code has been sent to your email. (Expires in 5 mins)",
-        label_otp: "OTP Code (6 digits)",
-        btn_verify: "Confirm Registration",
-        btn_back: "Go Back",
-        store_subtitle: "Curated SketchUp Extensions & Automation Store",
-        search_placeholder: "Search plugins...",
-        btn_logout: "Logout",
-        author_name: "Author: Nguyen Ban (THOVE-NB)",
-        author_desc: "Specializing in custom SketchUp plugins & furniture production automation.",
-        link_zalo: "Zalo Support",
-        link_fb: "Personal Facebook",
-        link_web: "Personal Website",
-        btn_close: "✕ Close",
-        btn_dl: "⬇ Download RBZ",
-        btn_web: "📖 Web",
-        btn_video: "▶ Video",
-        btn_activated: "✔ Activated",
-        no_plugin: "No matching plugins found in this category."
-      }
-    };
-
-    // Khởi tạo cấu trúc store trống (dữ liệu tab và plugin hoàn toàn load từ JSON ngoài)
+    
     let storeData = {
-      categories: [],
-      plugins: []
+      categories: [
+        { id: "tab_01", label: "🔥 Tất Cả" },
+        { id: "tab_02", label: "🪑 Nội Thất" },
+        { id: "tab_03", label: "🏗️ Kết Cấu" },
+        { id: "tab_04", label: "📐 Bóc Tách" },
+        { id: "tab_05", label: "🗂️ Thư Viện" },
+        { id: "tab_06", label: "⚡ Tự Động Hóa" },
+        { id: "tab_07", label: "🎨 Vật Liệu" },
+        { id: "tab_08", label: "📊 Xuất Báo Cáo" },
+        { id: "tab_09", label: "🛠️ Tiện Ích Khác" },
+        { id: "tab_10", label: "⭐ Premium Pro" }
+      ],
+      plugins: [
+        {
+          id: "nb_cabinet",
+          name: "NB Cabinet Pro",
+          version: "v2.5",
+          category: "tab_02",
+          icon: "🗄️",
+          icon_type: "text",
+          rating: 5,
+          downloads_count: 1280,
+          short_desc: "Tạo tủ quần áo, tủ bếp tự động thông minh theo kích thước tùy biến.",
+          features: ["Tự động khoan cam chốt", "Xuất mã ván CNC chuẩn", "Tùy biến vật liệu linh hoạt"],
+          tags: [
+            { text: "HOT", class: "hot" },
+            { text: "PRO", class: "pro" }
+          ],
+          download_url: "#",
+          guide_url: "https://thovenb.com",
+          video_url: "https://www.youtube-nocookie.com/embed/NUgPrYwUblc",
+          activated: false
+        },
+        {
+          id: "nb_cutlist",
+          name: "NB CutList Optimizer",
+          version: "v1.8",
+          category: "tab_04",
+          icon: "✂️",
+          icon_type: "text",
+          rating: 5,
+          downloads_count: 950,
+          short_desc: "Thuật toán tối ưu hóa cắt ván gỗ công nghiệp, giảm thiểu tối đa phế liệu.",
+          features: ["Tính toán khổ ván thông minh", "Xuất file báo cáo chi tiết", "Hỗ trợ dán cạnh tự động"],
+          tags: [
+            { text: "FREE", class: "free" },
+            { text: "NEW", class: "new" }
+          ],
+          download_url: "#",
+          guide_url: "https://thovenb.com",
+          video_url: "https://www.youtube-nocookie.com/embed/NUgPrYwUblc",
+          activated: true
+        },
+        {
+          id: "nb_autodimension",
+          name: "NB Auto Dimension",
+          version: "v3.1",
+          category: "tab_06",
+          icon: "📏",
+          icon_type: "text",
+          rating: 4,
+          downloads_count: 620,
+          short_desc: "Ghi kích thước tự động cho bản vẽ sản xuất chỉ với 1 cú click.",
+          features: ["Tự động bắt điểm linh hoạt", "Tùy chỉnh font chữ & màu sắc", "Tiết kiệm 80% thời gian"],
+          tags: [
+            { text: "HOT", class: "hot" }
+          ],
+          download_url: "#",
+          guide_url: "https://thovenb.com",
+          video_url: "https://www.youtube-nocookie.com/embed/NUgPrYwUblc",
+          activated: false
+        }
+      ]
     };
 
-    let currentCategory = "";
+    const GITHUB_JSON_URL = "https://gist.githubusercontent.com/Nguyenban92/8c01686e2af50a5793b25229a1b894c1/raw/ea82bfbd34630590a6b30169693f1a40a3554a95/Plugin.json";
+
+    let currentCategory = "tab_01";
     let searchQuery = "";
     let currentLang = "VI";
 
@@ -327,35 +463,25 @@
           if (remoteData && remoteData.plugins) {
             storeData.plugins = remoteData.plugins;
           }
-          if (remoteData && remoteData.categories) {
+          if (remoteData && remoteData.categories && remoteData.categories.length >= 10) {
             storeData.categories = remoteData.categories;
-            if (storeData.categories.length > 0 && !currentCategory) {
-              currentCategory = storeData.categories[0].id;
-            }
           }
         }
       } catch (e) {
-        console.log("Lỗi tải tệp cấu hình JSON.");
+        console.log("Sử dụng dữ liệu cấu hình 10 tab mặc định cục bộ.");
       }
       initStoreUI();
     }
 
     function initStoreUI() {
       const catBar = document.getElementById('categoriesBar');
-      if (!storeData.categories || storeData.categories.length === 0) return;
+      if (!storeData.categories) return;
 
-      catBar.innerHTML = storeData.categories.map(cat => {
-        // Hỗ trợ hiển thị tên tab đa ngôn ngữ nếu tệp JSON có định dạng { id: "...", label_vi: "...", label_en: "..." }
-        let labelText = cat.label || cat.label_vi || cat.id;
-        if (currentLang === 'EN' && cat.label_en) {
-          labelText = cat.label_en;
-        }
-        return `
-          <button class="cat-btn ${cat.id === currentCategory ? 'active' : ''}" onclick="filterCategory('${cat.id}')">
-            ${labelText}
-          </button>
-        `;
-      }).join('');
+      catBar.innerHTML = storeData.categories.map(cat => `
+        <button class="cat-btn ${cat.id === currentCategory ? 'active' : ''}" onclick="filterCategory('${cat.id}')">
+          ${cat.label}
+        </button>
+      `).join('');
 
       renderPluginsList();
     }
@@ -365,14 +491,15 @@
       if (!storeData.plugins) return;
 
       const filtered = storeData.plugins.filter(p => {
-        const matchCategory = !currentCategory || p.category === currentCategory || currentCategory === (storeData.categories[0] ? storeData.categories[0].id : '');
+        const matchCategory = currentCategory === 'tab_01' || p.category === currentCategory;
         const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            (p.short_desc && p.short_desc.toLowerCase().includes(searchQuery.toLowerCase()));
+                            p.short_desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                            (p.full_desc && p.full_desc.toLowerCase().includes(searchQuery.toLowerCase()));
         return matchCategory && matchSearch;
       });
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 30px; font-size: 11px;">${i18n[currentLang].no_plugin}</div>`;
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 30px; font-size: 11px;">Không tìm thấy plugin phù hợp trong danh mục này.</div>`;
         return;
       }
 
@@ -384,16 +511,8 @@
         const ratingVal = p.rating || 5;
         let starsHtml = '';
         for (let i = 1; i <= 5; i++) {
-          starsHtml += `<span onclick="ratePlugin('${p.id}', ${i})">${i <= ratingVal ? '★' : '☆'}</span>`;
+          starsHtml += `<span onclick="ratePlugin('${p.id}', ${i})" title="Đánh giá ${i} sao">${i <= ratingVal ? '★' : '☆'}</span>`;
         }
-
-        // Hỗ trợ song ngữ cho mô tả plugin nếu có trường mô tả tiếng Anh trong JSON
-        let descText = p.short_desc || p.desc || '';
-        if (currentLang === 'EN' && p.short_desc_en) {
-          descText = p.short_desc_en;
-        }
-
-        let featuresList = p.features || [];
 
         return `
         <div class="plugin-card" id="card-${p.id}">
@@ -412,11 +531,11 @@
               </div>
             </div>
 
-            <p class="plugin-desc">${descText}</p>
+            <p class="plugin-desc">${p.short_desc || p.desc || ''}</p>
 
-            ${featuresList.length > 0 ? `
+            ${p.features && p.features.length > 0 ? `
               <ul class="features-list">
-                ${featuresList.map(f => `<li>${f}</li>`).join('')}
+                ${p.features.map(f => `<li>${f}</li>`).join('')}
               </ul>
             ` : ''}
 
@@ -427,21 +546,21 @@
 
           <div class="plugin-actions">
             ${p.activated 
-              ? `<button class="btn-active">${i18n[currentLang].btn_activated}</button>`
+              ? `<button class="btn-active">✔ Đang kích hoạt</button>`
               : `<button class="btn-download" onclick="downloadPlugin('${p.id}', '${p.download_url}')">
-                  ${i18n[currentLang].btn_dl}
+                  ⬇ Tải RBZ
                  </button>`
             }
             
             ${p.guide_url ? `
-              <button class="btn-action-sec" onclick="openExternalUrl('${p.guide_url}')">
-                ${i18n[currentLang].btn_web}
+              <button class="btn-action-sec" onclick="openExternalUrl('${p.guide_url}')" title="Xem hướng dẫn">
+                📖 Web
               </button>
             ` : ''}
 
             ${p.video_url ? `
-              <button class="btn-action-sec" onclick="openVideoModal('${p.video_url}')">
-                ${i18n[currentLang].btn_video}
+              <button class="btn-action-sec" onclick="openVideoModal('${p.video_url}')" title="Xem video Demo YouTube">
+                ▶ Video
               </button>
             ` : ''}
           </div>
@@ -468,30 +587,21 @@
       renderPluginsList();
     }
 
-    // TÍNH NĂNG CHUYỂN ĐỔI NGÔN NGỮ TỰ ĐỘNG TOÀN BỘ
     function switchLanguage(lang) {
       currentLang = lang;
       document.getElementById('btnLangVI').classList.toggle('active', lang === 'VI');
       document.getElementById('btnLangEN').classList.toggle('active', lang === 'EN');
       
-      // Dịch toàn bộ các thẻ có gắn cờ data-i18n
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if (i18n[lang][key]) {
-          el.innerText = i18n[lang][key];
-        }
-      });
+      const subTitle = document.getElementById('sub-title-text');
+      const searchBox = document.getElementById('searchInput');
 
-      // Dịch placeholder của ô tìm kiếm
-      document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-        const key = el.getAttribute("data-i18n-placeholder");
-        if (i18n[lang][key]) {
-          el.placeholder = i18n[lang][key];
-        }
-      });
-
-      // Cập nhật lại giao diện danh mục và danh sách plugin theo ngôn ngữ mới
-      initStoreUI();
+      if (lang === 'EN') {
+        subTitle.innerText = "Curated SketchUp Extensions & Automation Store";
+        searchBox.placeholder = "Search plugins...";
+      } else {
+        subTitle.innerText = "Kho tiện ích SketchUp chọn lọc & Tự động hóa";
+        searchBox.placeholder = "Tìm kiếm plugin...";
+      }
     }
 
     function downloadPlugin(pluginId, downloadUrl) {
@@ -505,7 +615,7 @@
       if (typeof sketchup !== 'undefined' && sketchup.download_plugin) {
         sketchup.download_plugin(pluginId, downloadUrl);
       } else {
-        alert("Download URL: " + downloadUrl);
+        alert("Đang kích hoạt tải về trực tiếp từ SketchUp:\n" + downloadUrl);
       }
     }
 
@@ -526,12 +636,15 @@
       } else if (url.includes("youtu.be/")) {
         embedUrl = url.replace("youtu.be/", "www.youtube-nocookie.com/embed/");
       }
+
+      // Đảm bảo dùng nocookie để chạy mượt mà và chống lỗi bảo mật iframe
       if (embedUrl.includes("youtube.com")) {
         embedUrl = embedUrl.replace("youtube.com", "youtube-nocookie.com");
       }
 
       const modal = document.getElementById('videoModal');
       const iframe = document.getElementById('youtubeIframe');
+      
       iframe.src = embedUrl + "?autoplay=1";
       modal.classList.remove('hidden');
     }
@@ -539,8 +652,17 @@
     function closeVideoModal() {
       const modal = document.getElementById('videoModal');
       const iframe = document.getElementById('youtubeIframe');
+      
       iframe.src = "";
       modal.classList.add('hidden');
+    }
+
+    function onPluginInstalled(pluginId) {
+      const target = storeData.plugins.find(p => p.id === pluginId);
+      if (target) {
+        target.activated = true;
+        renderPluginsList();
+      }
     }
 
     async function loginUser() {
@@ -548,10 +670,11 @@
       const pass = document.getElementById('password').value.trim();
       const msg1 = document.getElementById('msg1');
       const btnLog = document.getElementById('btnLogin');
+      const btnReq = document.getElementById('btnRequest');
 
-      if (!email || !pass) { msg1.innerText = currentLang === 'VI' ? "Vui lòng nhập Email và Mật khẩu!" : "Please enter Email and Password!"; return; }
+      if (!email || !pass) { msg1.innerText = "Vui lòng nhập Email và Mật khẩu!"; return; }
 
-      btnLog.disabled = true; msg1.innerText = "";
+      btnLog.innerText = "Đang kiểm tra..."; btnLog.disabled = true; btnReq.disabled = true; msg1.innerText = "";
 
       try {
         const response = await fetch(GAS_URL, {
@@ -559,39 +682,47 @@
           body: JSON.stringify({ action: "login", username: email, password: pass })
         });
         const data = await response.json();
+        
         if (data.status === "success") {
           localStorage.setItem("thovenb_auth", "true");
           showStoreInterface();
         } else {
           msg1.innerText = data.message;
         }
-      } catch (e) { msg1.innerText = "Connection error!"; }
-      btnLog.disabled = false;
+      } catch (e) { msg1.innerText = "Lỗi kết nối đến máy chủ!"; }
+      
+      btnLog.innerText = "Đăng Nhập"; btnLog.disabled = false; btnReq.disabled = false;
     }
 
     async function requestOTP() {
       const email = document.getElementById('email').value.trim();
       const pass = document.getElementById('password').value.trim();
       const msg1 = document.getElementById('msg1');
+      const btnLog = document.getElementById('btnLogin');
       const btnReq = document.getElementById('btnRequest');
 
-      if (!email || !pass) { msg1.innerText = currentLang === 'VI' ? "Vui lòng nhập Email và Mật khẩu!" : "Please enter Email and Password!"; return; }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !pass) { msg1.innerText = "Vui lòng nhập Email và Mật khẩu!"; return; }
+      if (!emailRegex.test(email)) { msg1.innerText = "Định dạng Email không hợp lệ!"; return; }
 
-      btnReq.disabled = true; msg1.innerText = "";
+      btnReq.innerText = "Đang gửi Email..."; btnReq.disabled = true; btnLog.disabled = true; msg1.innerText = "";
+
       try {
         const response = await fetch(GAS_URL, {
           method: 'POST',
           body: JSON.stringify({ action: "send_otp", username: email, password: pass })
         });
         const data = await response.json();
+        
         if (data.status === "success") {
           document.getElementById('step1').classList.add('hidden');
           document.getElementById('step2').classList.remove('hidden');
         } else {
           msg1.innerText = data.message;
         }
-      } catch (e) { msg1.innerText = "Connection error!"; }
-      btnReq.disabled = false;
+      } catch (e) { msg1.innerText = "Lỗi kết nối đến máy chủ!"; }
+      
+      btnReq.innerText = "Đăng Ký (Nhận OTP qua Email)"; btnReq.disabled = false; btnLog.disabled = false;
     }
 
     async function verifyOTP() {
@@ -601,30 +732,32 @@
       const msg2 = document.getElementById('msg2');
       const btn = document.getElementById('btnVerify');
 
-      if (!otp) { msg2.innerText = currentLang === 'VI' ? "Vui lòng nhập mã OTP!" : "Please enter OTP code!"; return; }
+      if (!otp) { msg2.innerText = "Vui lòng nhập mã OTP!"; return; }
 
-      btn.disabled = true; msg2.innerText = "";
+      btn.innerText = "Đang xác nhận..."; btn.disabled = true; msg2.innerText = "";
+
       try {
         const response = await fetch(GAS_URL, {
           method: 'POST',
           body: JSON.stringify({ action: "register", username: email, password: pass, otp: otp })
         });
         const data = await response.json();
+        
         if (data.status === "success") {
           localStorage.setItem("thovenb_auth", "true");
           showStoreInterface();
         } else {
           msg2.innerText = data.message;
         }
-      } catch (e) { msg2.innerText = "Connection error!"; }
-      btn.disabled = false;
+      } catch (e) { msg2.innerText = "Lỗi kết nối đến máy chủ!"; }
+      
+      btn.innerText = "Xác Nhận Đăng Ký"; btn.disabled = false;
     }
 
     function cancelOTP() {
       document.getElementById('step2').classList.add('hidden');
       document.getElementById('step1').classList.remove('hidden');
-      document.getElementById('otp').value = ''; 
-      document.getElementById('msg2').innerText = '';
+      document.getElementById('otp').value = ''; document.getElementById('msg2').innerText = '';
     }
 
     function logout() {
