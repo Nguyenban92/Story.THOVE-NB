@@ -6,7 +6,6 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <style>
-    /* BẢNG MÀU GIAO DIỆN DARK MODE CHUYÊN NGHIỆP */
     :root {
       --bg-main: #0a1118;      
       --bg-panel: #131e2b;       
@@ -28,7 +27,6 @@
     
     body { background-color: var(--bg-main); color: var(--text-main); height: 100vh; overflow: hidden; padding: 12px; }
 
-    /* LỚP PHỦ ĐĂNG NHẬP / ĐĂNG KÝ OTP */
     .login-wrapper { display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; position: fixed; top: 0; left: 0; z-index: 999; background: rgba(10, 17, 24, 0.95); backdrop-filter: blur(8px); }
     .login-container { background: var(--bg-panel); border: 1px solid var(--border-color); padding: 32px; border-radius: 12px; width: 380px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
     .login-container h2 { text-align: center; margin-bottom: 16px; color: var(--orange-main); font-size: 20px; }
@@ -44,7 +42,6 @@
     .msg-error { color: #ff4d4d; font-size: 12px; margin-top: 12px; text-align: center; min-height: 16px; }
     .hidden { display: none !important; }
 
-    /* GIAO DIỆN STORE CỐ ĐỊNH ĐẦU & ĐÁY (TỶ LỆ 0.8) */
     #store-ui { 
       max-width: 1350px; 
       margin: 0 auto; 
@@ -60,7 +57,6 @@
       padding: 12px 20px; 
     }
 
-    /* 1. TOOLBAR CỐ ĐỊNH Ở PHÍA TRÊN */
     .store-header { 
       display: flex; 
       justify-content: space-between; 
@@ -83,7 +79,6 @@
     .logout-btn { cursor: pointer; color: #ff4d4d; padding: 5px 10px; background: rgba(255, 77, 77, 0.1); border-radius: 6px; font-size: 10px; font-weight: bold; border: 1px solid rgba(255, 77, 77, 0.3); transition: 0.2s; }
     .logout-btn:hover { background: rgba(255, 77, 77, 0.2); }
 
-    /* 2. KHU VỰC NỘI DUNG Ở GIỮA */
     .main-scroll-area {
       flex: 1;               
       overflow-y: auto;      
@@ -97,7 +92,6 @@
     .main-scroll-area::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
     .main-scroll-area::-webkit-scrollbar-thumb:hover { background: var(--orange-main); }
 
-    /* THANH TAB 10 CHỨC NĂNG THU NHỎ (0.8) */
     .categories-bar { 
       display: flex; 
       gap: 6px; 
@@ -122,7 +116,6 @@
     }
     .cat-btn.active, .cat-btn:hover { background: var(--orange-main); color: white; border-color: var(--orange-main); }
 
-    /* LƯỚI CARD PLUGIN - CHIA ĐÚNG 3 CỘT */
     .store-grid { 
       display: grid; 
       grid-template-columns: repeat(3, 1fr); 
@@ -173,7 +166,6 @@
     .btn-action-sec:hover { border-color: var(--text-muted); color: white; background: rgba(255, 255, 255, 0.05); }
     .btn-active { flex: 2; background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-text); border-radius: 5px; padding: 6px; font-weight: bold; font-size: 10px; cursor: default; text-align: center; }
 
-    /* 3. FOOTER CỐ ĐỊNH ĐÁY */
     .store-footer { 
       display: flex; 
       justify-content: space-between; 
@@ -193,7 +185,6 @@
     
     .footer-right img { height: 75px; opacity: 1; }
 
-    /* MODAL XEM YOUTUBE TRỰC TIẾP */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -254,6 +245,7 @@
 </head>
 <body>
 
+  <!-- BƯỚC 1: ĐĂNG NHẬP -->
   <div id="step1" class="login-wrapper">
     <div class="login-container">
       <h2>Đăng Nhập Store</h2>
@@ -274,6 +266,7 @@
     </div>
   </div>
 
+  <!-- BƯỚC 2: NHẬP OTP -->
   <div id="step2" class="login-wrapper hidden">
     <div class="login-container">
       <h2>Xác Nhận Đăng Ký</h2>
@@ -290,6 +283,7 @@
     </div>
   </div>
 
+  <!-- BƯỚC 3: GIAO DIỆN STORE -->
   <div id="store-ui" class="hidden">
     
     <div class="panel store-header">
@@ -360,44 +354,360 @@
   <script>
     const GAS_URL = "https://script.google.com/macros/s/AKfycbykbmPWwPKLy2HGOiN3sOJwSBzPBvTOEPppL7uqY4pUKGJSVIYDqQQvTSpS3p6SlH1B/exec";
     
-    // ĐÃ TÍCH HỢP TOÀN BỘ DỮ LIỆU JSON TRỰC TIẾP VÀO ĐÂY
+    // TÍCH HỢP TRỰC TIẾP DỮ LIỆU JSON VÀO BIẾN DƯỚI ĐÂY
     let storeData = {
-      categories: [
-        { id: "tab_01", label: "🔥 Tất Cả" },
-        { id: "tab_02", label: "🪑 Nội Thất" },
-        { id: "tab_03", label: "🏗️ Kết Cấu" },
-        { id: "tab_04", label: "📐 Bóc Tách" },
-        { id: "tab_05", label: "📁 Thư Viện" },
-        { id: "tab_06", label: "⚡ Tự Động Hóa" },
-        { id: "tab_07", label: "🎨 Vật Liệu" },
-        { id: "tab_08", label: "📊 Xuất Báo Cáo" },
-        { id: "tab_09", label: "🛠️ Tiện Ích Khác" },
-        { id: "tab_10", label: "⭐ Premium Pro" }
+      "categories": [
+        { "id": "tab_01", "label": "Tất Cả Plugin" },
+        { "id": "tab_02", "label": "Plugin Cơ Bản" },
+        { "id": "tab_03", "label": "Plugin Nâng Cao" },
+        { "id": "tab_04", "label": "Nội Thất & Tủ Bếp" },
+        { "id": "tab_05", "label": "Thư Viện Nội Thất" },
+        { "id": "tab_06", "label": "Thư Viện Ngoại Thất" },
+        { "id": "tab_07", "label": "MAP & Vật Liệu" },
+        { "id": "tab_08", "label": "Render Ai Free" },
+        { "id": "tab_09", "label": "Tiện Ích Khác" },
+        { "id": "tab_10", "label": "Linh Tinh" }
       ],
-      plugins: [
+      "plugins": [
         {
-          id: "nb_cabinet",
-          name: "NB Cabinet Pro",
-          version: "v2.5",
-          category: "tab_02",
-          icon: "🪑",
-          icon_type: "text",
-          rating: 5,
-          downloads_count: 1280,
-          short_desc: "Tạo tủ quần áo, tủ bếp tự động thông minh theo kích thước tùy biến.",
-          full_desc: "Công cụ thiết kế tủ nội thất toàn diện, tự động sinh bản vẽ và khoan nhôm định hình.",
-          features: [
-            "Tự động nhảy kích thước theo thông số",
-            "Tích hợp xuất file CNC nhanh chóng",
-            "Thư viện gỗ công nghiệp chuẩn quốc tế"
-          ],
-          tags: [
-            { class: "hot", text: "HOT" },
-            { class: "pro", text: "PRO" }
-          ],
-          download_url: "https://example.com/nb_cabinet.rbz",
-          guide_url: "https://thovenb.com",
-          video_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          "id": "plugin_01",
+          "name": "Cabinet Pro 2026",
+          "version": "v2.5",
+          "category": "tab_04",
+          "icon_type": "emoji",
+          "icon": "🗄️",
+          "short_desc": "Tự động thiết kế và bóc tách khối lượng tủ bếp thông minh.",
+          "features": ["Sinh linh kiện tự động", "Xuất danh sách vật liệu CNC"],
+          "tags": [{ "class": "hot", "text": "HOT" }, { "class": "pro", "text": "PRO" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_01",
+          "guide_url": "DIEN_LINK_HUONG_DAN_01",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_01",
+          "activated": false
+        },
+        {
+          "id": "plugin_02",
+          "name": "Quick Dim Basic",
+          "version": "v1.0",
+          "category": "tab_02",
+          "icon_type": "emoji",
+          "icon": "📏",
+          "short_desc": "Công cụ đo kích thước nhanh cho người mới bắt đầu.",
+          "features": ["Đo dimension cơ bản", "Tự động bắt điểm"],
+          "tags": [{ "class": "free", "text": "FREE" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_02",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_02",
+          "activated": false
+        },
+        {
+          "id": "plugin_03",
+          "name": "Advanced Matrix Pro",
+          "version": "v3.2",
+          "category": "tab_03",
+          "icon_type": "emoji",
+          "icon": "⚙️",
+          "short_desc": "Công cụ tính toán hình học phức tạp và mảng đối tượng lớn.",
+          "features": ["Nhân bản ma trận 3D", "Tối ưu hóa hình khối nặng"],
+          "tags": [{ "class": "pro", "text": "PRO" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_03",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_03",
+          "activated": false
+        },
+        {
+          "id": "plugin_04",
+          "name": "Sofa & Bed Library",
+          "version": "v1.5",
+          "category": "tab_05",
+          "icon_type": "emoji",
+          "icon": "🛋️",
+          "short_desc": "Thư viện mẫu sofa, giường ngủ hiện đại dựng sẵn chất lượng cao.",
+          "features": ["Đa dạng phong cách", "Poly tối ưu nhẹ file"],
+          "tags": [{ "class": "new", "text": "MỚI" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_04",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_04",
+          "activated": false
+        },
+        {
+          "id": "plugin_05",
+          "name": "Garden & Tree Pack",
+          "version": "v2.0",
+          "category": "tab_06",
+          "icon_type": "emoji",
+          "icon": "🌳",
+          "short_desc": "Bộ sưu tập cây xanh, thảm cỏ, ngoại cảnh cho biệt thự và quy hoạch.",
+          "features": ["Cây 2D/3D linh hoạt", "Màu sắc chân thực"],
+          "tags": [{ "class": "hot", "text": "HOT" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_05",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_05",
+          "activated": false
+        },
+        {
+          "id": "plugin_06",
+          "name": "Auto Material Mapper",
+          "version": "v1.1",
+          "category": "tab_07",
+          "icon_type": "emoji",
+          "icon": "🎨",
+          "short_desc": "Gán vật liệu vân gỗ, sơn tường hàng loạt theo tên component.",
+          "features": ["Quản lý thư viện map", "Áp vật liệu tức thì"],
+          "tags": [{ "class": "free", "text": "FREE" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_06",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_06",
+          "activated": false
+        },
+        {
+          "id": "plugin_07",
+          "name": "AI Render Studio Free",
+          "version": "v1.0",
+          "category": "tab_08",
+          "icon_type": "emoji",
+          "icon": "✨",
+          "short_desc": "Tích hợp công cụ Render AI tạo phối cảnh nhanh trực tiếp.",
+          "features": ["Biến model thô thành ảnh đẹp", "Thao tác trực quan"],
+          "tags": [{ "class": "new", "text": "MỚI" }, { "class": "free", "text": "FREE" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_07",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_07",
+          "activated": false
+        },
+        {
+          "id": "plugin_08",
+          "name": "CleanUp & Purge Tool",
+          "version": "v2.5",
+          "category": "tab_09",
+          "icon_type": "emoji",
+          "icon": "🧹",
+          "short_desc": "Dọn dẹp file SketchUp nặng, xóa rác và vật liệu thừa hiệu quả.",
+          "features": ["Giảm dung lượng file", "Tăng tốc độ làm việc"],
+          "tags": [{ "class": "free", "text": "FREE" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_08",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_08",
+          "activated": false
+        },
+        {
+          "id": "plugin_09",
+          "name": "Test Utility Script",
+          "version": "v0.9",
+          "category": "tab_10",
+          "icon_type": "emoji",
+          "icon": "📦",
+          "short_desc": "Các đoạn script nhỏ thử nghiệm các tính năng linh tinh.",
+          "features": ["Tính năng thử nghiệm", "Hỗ trợ phụ trợ"],
+          "tags": [{ "class": "free", "text": "FREE" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_09",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_09",
+          "activated": false
+        },
+        {
+          "id": "plugin_10",
+          "name": "Wardrobe Pro Designer",
+          "version": "v2.0",
+          "category": "tab_04",
+          "icon_type": "emoji",
+          "icon": "🚪",
+          "short_desc": "Chuyên gia thiết kế tủ áo, kệ trang trí thông minh tự động.",
+          "features": ["Tùy biến đợt hộc", "Tính toán phụ kiện"],
+          "tags": [{ "class": "pro", "text": "PRO" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_10",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_10",
+          "activated": false
+        },
+        {
+          "id": "plugin_11",
+          "name": "Move & Copy Helper",
+          "version": "v1.2",
+          "category": "tab_02",
+          "icon_type": "emoji",
+          "icon": "📌",
+          "short_desc": "Hỗ trợ di chuyển và sao chép đối tượng nhanh bằng phím tắt.",
+          "features": ["Thao tác nhanh gọn", "Dễ sử dụng"],
+          "tags": [{ "class": "free", "text": "FREE" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_11",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_11",
+          "activated": false
+        },
+        {
+          "id": "plugin_12",
+          "name": "BIM Component Manager",
+          "version": "v3.0",
+          "category": "tab_03",
+          "icon_type": "emoji",
+          "icon": "📊",
+          "short_desc": "Quản lý thông tin thuộc tính BIM cho các đối tượng kiến trúc.",
+          "features": ["Gán thuộc tính thông minh", "Xuất báo cáo dữ liệu"],
+          "tags": [{ "class": "pro", "text": "PRO" }, { "class": "hot", "text": "HOT" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_12",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_12",
+          "activated": false
+        },
+        {
+          "id": "plugin_13",
+          "name": "Kitchen Accessories Pack",
+          "version": "v1.0",
+          "category": "tab_05",
+          "icon_type": "emoji",
+          "icon": "🍳",
+          "short_desc": "Thư viện phụ kiện bếp: chậu rửa, vòi, lò nướng, máy hút mùi.",
+          "features": ["Mẫu chuẩn thực tế", "Kích thước chính xác"],
+          "tags": [{ "class": "new", "text": "MỚI" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_13",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_13",
+          "activated": false
+        },
+        {
+          "id": "plugin_14",
+          "name": "Facade Panel Generator",
+          "version": "v1.4",
+          "category": "tab_06",
+          "icon_type": "emoji",
+          "icon": "🏢",
+          "short_desc": "Tạo mặt dựng nhôm kính, lam che nắng ngoại thất tự động.",
+          "features": ["Tùy chỉnh khoảng cách nan", "Xuất khối lượng nhanh"],
+          "tags": [{ "class": "pro", "text": "PRO" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_14",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_14",
+          "activated": false
+        },
+        {
+          "id": "plugin_15",
+          "name": "PBR Material Library",
+          "version": "v2.2",
+          "category": "tab_07",
+          "icon_type": "emoji",
+          "icon": "🧱",
+          "short_desc": "Thư viện vật liệu PBR cao cấp: gạch, bê tông, đá marble.",
+          "features": ["Độ phân giải cao", "Tích hợp sẵn Bump/Roughness"],
+          "tags": [{ "class": "hot", "text": "HOT" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_15",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_15",
+          "activated": false
+        },
+        {
+          "id": "plugin_16",
+          "name": "AI Sketch to 3D",
+          "version": "v1.1",
+          "category": "tab_08",
+          "icon_type": "emoji",
+          "icon": "🤖",
+          "short_desc": "Hỗ trợ gợi ý ý tưởng thiết kế kiến trúc qua trí tuệ nhân tạo.",
+          "features": ["Phân tích không gian", "Gợi ý phong cách"],
+          "tags": [{ "class": "new", "text": "MỚI" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_16",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_16",
+          "activated": false
+        },
+        {
+          "id": "plugin_17",
+          "name": "Layer & Tag Organizer",
+          "version": "v1.8",
+          "category": "tab_09",
+          "icon_type": "emoji",
+          "icon": "📁",
+          "short_desc": "Sắp xếp và chuẩn hóa tên Tag/Layer theo tiêu chuẩn văn phòng.",
+          "features": ["Lọc tag nhanh", "Đổi tên hàng loạt"],
+          "tags": [{ "class": "free", "text": "FREE" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_17",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_17",
+          "activated": false
+        },
+        {
+          "id": "plugin_18",
+          "name": "Quick Notes & Reminders",
+          "version": "v1.0",
+          "category": "tab_10",
+          "icon_type": "emoji",
+          "icon": "📝",
+          "short_desc": "Tiện ích ghi chú công việc trực tiếp trong giao diện dự án.",
+          "features": ["Ghi chú nhanh", "Lưu trữ nội dung project"],
+          "tags": [{ "class": "free", "text": "FREE" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_18",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_18",
+          "activated": false
+        },
+        {
+          "id": "plugin_19",
+          "name": "Smart CutList Pro",
+          "version": "v3.0",
+          "category": "tab_04",
+          "icon_type": "emoji",
+          "icon": "📋",
+          "short_desc": "Tối ưu hóa sơ đồ cắt ván gỗ công nghiệp, xuất báo cáo vật liệu.",
+          "features": ["Sơ đồ cắt tối ưu", "Thống kê phụ kiện"],
+          "tags": [{ "class": "pro", "text": "PRO" }, { "class": "hot", "text": "HOT" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_19",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_19",
+          "activated": false
+        },
+        {
+          "id": "plugin_20",
+          "name": "Batch Exporter Studio",
+          "version": "v2.1",
+          "category": "tab_03",
+          "icon_type": "emoji",
+          "icon": "🚀",
+          "short_desc": "Xuất hàng loạt file ảnh, định dạng CAD/OBJ từ các scene đã tạo.",
+          "features": ["Xuất ảnh độ phân giải cao", "Tự động hóa tác vụ"],
+          "tags": [{ "class": "pro", "text": "PRO" }],
+          "rating": 5,
+          "downloads_count": 0,
+          "download_url": "DIEN_LINK_TAI_RBZ_20",
+          "guide_url": "",
+          "video_url": "https://youtube.com/watch?v=EXAMPLE_20",
+          "activated": false
         }
       ]
     };
@@ -701,7 +1011,7 @@
       document.getElementById('step1').classList.add('hidden');
       document.getElementById('step2').classList.add('hidden');
       document.getElementById('store-ui').classList.remove('hidden');
-      initStoreUI(); // Tải trực tiếp dữ liệu có sẵn ngay trong file
+      initStoreUI(); // Khởi tạo giao diện trực tiếp từ biến storeData có sẵn
     }
 
     window.onload = function() {
