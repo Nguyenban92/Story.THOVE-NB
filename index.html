@@ -371,79 +371,8 @@
     const GAS_URL = "https://script.google.com/macros/s/AKfycbykbmPWwPKLy2HGOiN3sOJwSBzPBvTOEPppL7uqY4pUKGJSVIYDqQQvTSpS3p6SlH1B/exec";
     
     let storeData = {
-      categories: [
-        { id: "tab_01", label: "🔥 Tất Cả" },
-        { id: "tab_02", label: "🪑 Nội Thất" },
-        { id: "tab_03", label: "🏗️ Kết Cấu" },
-        { id: "tab_04", label: "📐 Bóc Tách" },
-        { id: "tab_05", label: "🗂️ Thư Viện" },
-        { id: "tab_06", label: "⚡ Tự Động Hóa" },
-        { id: "tab_07", label: "🎨 Vật Liệu" },
-        { id: "tab_08", label: "📊 Xuất Báo Cáo" },
-        { id: "tab_09", label: "🛠️ Tiện Ích Khác" },
-        { id: "tab_10", label: "⭐ Premium Pro" }
-      ],
-      plugins: [
-        {
-          id: "nb_cabinet",
-          name: "NB Cabinet Pro",
-          version: "v2.5",
-          category: "tab_02",
-          icon: "🗄️",
-          icon_type: "text",
-          rating: 5,
-          downloads_count: 1280,
-          short_desc: "Tạo tủ quần áo, tủ bếp tự động thông minh theo kích thước tùy biến.",
-          features: ["Tự động khoan cam chốt", "Xuất mã ván CNC chuẩn", "Tùy biến vật liệu linh hoạt"],
-          tags: [
-            { text: "HOT", class: "hot" },
-            { text: "PRO", class: "pro" }
-          ],
-          download_url: "#",
-          guide_url: "https://thovenb.com",
-          video_url: "https://www.youtube-nocookie.com/embed/NUgPrYwUblc",
-          activated: false
-        },
-        {
-          id: "nb_cutlist",
-          name: "NB CutList Optimizer",
-          version: "v1.8",
-          category: "tab_04",
-          icon: "✂️",
-          icon_type: "text",
-          rating: 5,
-          downloads_count: 950,
-          short_desc: "Thuật toán tối ưu hóa cắt ván gỗ công nghiệp, giảm thiểu tối đa phế liệu.",
-          features: ["Tính toán khổ ván thông minh", "Xuất file báo cáo chi tiết", "Hỗ trợ dán cạnh tự động"],
-          tags: [
-            { text: "FREE", class: "free" },
-            { text: "NEW", class: "new" }
-          ],
-          download_url: "#",
-          guide_url: "https://thovenb.com",
-          video_url: "https://www.youtube-nocookie.com/embed/NUgPrYwUblc",
-          activated: true
-        },
-        {
-          id: "nb_autodimension",
-          name: "NB Auto Dimension",
-          version: "v3.1",
-          category: "tab_06",
-          icon: "📏",
-          icon_type: "text",
-          rating: 4,
-          downloads_count: 620,
-          short_desc: "Ghi kích thước tự động cho bản vẽ sản xuất chỉ với 1 cú click.",
-          features: ["Tự động bắt điểm linh hoạt", "Tùy chỉnh font chữ & màu sắc", "Tiết kiệm 80% thời gian"],
-          tags: [
-            { text: "HOT", class: "hot" }
-          ],
-          download_url: "#",
-          guide_url: "https://thovenb.com",
-          video_url: "https://www.youtube-nocookie.com/embed/NUgPrYwUblc",
-          activated: false
-        }
-      ]
+      categories: [],
+      plugins: []
     };
 
     const GITHUB_JSON_URL = "https://gist.githubusercontent.com/Nguyenban92/8c01686e2af50a5793b25229a1b894c1/raw/e65f121a2b9dccb08cb750773a6e80866ad0a2fd/Plugin.json";
@@ -468,7 +397,7 @@
           }
         }
       } catch (e) {
-        console.log("Sử dụng dữ liệu cấu hình 10 tab mặc định cục bộ.");
+        console.log("Sử dụng dữ liệu cấu hình từ GitHub.");
       }
       initStoreUI();
     }
@@ -637,7 +566,6 @@
         embedUrl = url.replace("youtu.be/", "www.youtube-nocookie.com/embed/");
       }
 
-      // Đảm bảo dùng nocookie để chạy mượt mà và chống lỗi bảo mật iframe
       if (embedUrl.includes("youtube.com")) {
         embedUrl = embedUrl.replace("youtube.com", "youtube-nocookie.com");
       }
@@ -769,12 +697,14 @@
       document.getElementById('step1').classList.add('hidden');
       document.getElementById('step2').classList.add('hidden');
       document.getElementById('store-ui').classList.remove('hidden');
-      loadRemoteStoreData(); 
+      loadRemoteStoreData();
     }
-    
-    if (localStorage.getItem("thovenb_auth") === "true") {
-      showStoreInterface();
-    }
+
+    window.onload = function() {
+      if (localStorage.getItem("thovenb_auth") === "true") {
+        showStoreInterface();
+      }
+    };
   </script>
 </body>
 </html>
