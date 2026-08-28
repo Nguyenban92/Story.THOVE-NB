@@ -78,7 +78,7 @@
     .lang-btn { padding: 5px 8px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 10px; font-weight: bold; }
     .lang-btn.active { background: var(--orange-main); color: white; }
     
-    .youtube-btn { text-decoration: none; cursor: pointer; color: #ffffff; background: var(--orange-main); padding: 5px 10px; border-radius: 6px; font-size: 10px; font-weight: bold; border: 1px solid var(--orange-main); transition: 0.2s; display: flex; align-items: center; gap: 3px; }
+    .youtube-btn { cursor: pointer; color: #ffffff; background: var(--orange-main); padding: 5px 10px; border-radius: 6px; font-size: 10px; font-weight: bold; border: 1px solid var(--orange-main); transition: 0.2s; display: flex; align-items: center; gap: 3px; }
     .youtube-btn:hover { background: var(--orange-hover); }
 
     .logout-btn { cursor: pointer; color: #ff4d4d; padding: 5px 10px; background: rgba(255, 77, 77, 0.1); border-radius: 6px; font-size: 10px; font-weight: bold; border: 1px solid rgba(255, 77, 77, 0.3); transition: 0.2s; }
@@ -174,7 +174,6 @@
     .btn-action-sec:hover { border-color: var(--text-muted); color: white; background: rgba(255, 255, 255, 0.05); }
     .btn-active { flex: 2; background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-text); border-radius: 5px; padding: 5px; font-weight: bold; font-size: 9.5px; cursor: default; text-align: center; }
 
-    /* Đã tinh chỉnh store-footer gọn lại */
     .store-footer { 
       display: flex; 
       justify-content: space-between; 
@@ -183,7 +182,7 @@
       padding: 6px 16px;
     }
     .footer-left { display: flex; align-items: center; gap: 10px; }
-    .qr-box { width: 92px; height: 92px; background: white; border-radius: 5px; padding: 2px; flex-shrink: 0; }
+    .qr-box { width: 82px; height: 82px; background: white; border-radius: 5px; padding: 2px; flex-shrink: 0; }
     .qr-box img { width: 100%; height: 100%; object-fit: contain; }
     
     .author-info h4 { font-size: 11px; margin-bottom: 1px; color: white; font-weight: bold; }
@@ -192,7 +191,7 @@
     .social-links a { text-decoration: none; font-size: 8px; color: var(--text-muted); border: 1px solid var(--border-color); padding: 1px 5px; border-radius: 6px; background: var(--bg-main); transition: 0.2s; font-weight: bold; }
     .social-links a:hover { color: white; border-color: var(--text-muted); }
     
-    .footer-right img { height: 100px; opacity: 1; object-fit: contain; }
+    .footer-right img { height: 85px; opacity: 1; object-fit: contain; }
 
     .modal-overlay {
       position: fixed;
@@ -312,7 +311,7 @@
           <button class="lang-btn active" id="btnLangVI" onclick="switchLanguage('VI')">VI</button>
           <button class="lang-btn" id="btnLangEN" onclick="switchLanguage('EN')">EN</button>
         </div>
-        <a class="youtube-btn" href="https://www.youtube.com/@TienSinh.ThaoMai?sub_confirmation=1" target="_blank" title="Đăng ký kênh YouTube" id="txt-yt-btn">▶ Đăng Ký YT</a>
+        <button class="youtube-btn" onclick="openExternalUrl('https://www.youtube.com/@TienSinh.ThaoMai?sub_confirmation=1')" title="Đăng ký kênh YouTube" id="txt-yt-btn">▶ Đăng Ký YT</button>
         <button class="logout-btn" onclick="logout()" title="Đăng Xuất" id="txt-logout-btn">Đăng xuất</button>
       </div>
     </div>
@@ -324,7 +323,6 @@
       <div class="store-grid" id="pluginsGrid"></div>
     </div>
 
-    <!-- KHUNG DƯỚI ĐÃ ĐƯỢC TINH CHỈNH GỌN LẠI SÁT VÀO NHAU -->
     <div class="panel store-footer">
       <div class="footer-left">
         <div class="qr-box">
@@ -897,7 +895,6 @@
       const subTitle = document.getElementById('sub-title-text');
       const searchBox = document.getElementById('searchInput');
 
-      // Login Step 1 UI translations
       const loginTitle = document.getElementById('txt-login-title');
       const loginDesc = document.getElementById('txt-login-desc');
       const emailLabel = document.getElementById('txt-email-label');
@@ -905,14 +902,12 @@
       const btnLogin = document.getElementById('btnLogin');
       const btnRequest = document.getElementById('btnRequest');
 
-      // Login Step 2 UI translations
       const otpTitle = document.getElementById('txt-otp-title');
       const otpDesc = document.getElementById('txt-otp-desc');
       const otpLabel = document.getElementById('txt-otp-label');
       const btnVerify = document.getElementById('btnVerify');
       const backBtn = document.getElementById('txt-back-btn');
 
-      // Header & Footer UI translations
       const storeName = document.getElementById('txt-store-name');
       const ytBtn = document.getElementById('txt-yt-btn');
       const logoutBtn = document.getElementById('txt-logout-btn');
